@@ -47,22 +47,18 @@
         </div>
       </ng-container>
   
-      <ng-container *ngIf="selectedSection === 'login'">
-        <!-- Content for login -->
-        <form (submit)="login()" class="flex flex-col items-center">
-          <!-- Add your login form fields here -->
-          <!-- in the log in include how the customer want to log on the system like personal, business, investment or shares -->
-          <input type="text" placeholder="Username" class="mb-2 p-2 rounded-md border">
-          <input type="password" placeholder="Password" class="mb-2 p-2 rounded-md border">
-          <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Login</button>
-          <div class="mt-2">
-            <a href="#" class="text-blue-500">Forgot Password?</a>
-          </div>
-          <!-- after the account selection i want to redirect either to log in or registration depending -->
-        </form>
-      </ng-container>
-      
-  
+      <form (submit)="login()" class="flex flex-col items-center">
+        <!-- Add your login form fields here -->
+        <!-- in the log in include how the customer want to log on the system like personal, business, investment or shares -->
+        <input type="text" placeholder="Username" class="mb-2 p-2 rounded-md border">
+        <input type="password" placeholder="Password" class="mb-2 p-2 rounded-md border">
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Login</button>
+        <div class="mt-2">
+          <label class="text-blue-500">Forgot Password?</label>
+        </div>
+        <!-- Link to open the Open Bank Account section -->
+        <label class="text-blue-500" (click)="openRegistrationForm()">Open Bank Account</label>
+      </form>
       <button (click)="closeSection()" class="absolute top-4 right-4 text-blue-500 hover:underline">
         Close
       </button>

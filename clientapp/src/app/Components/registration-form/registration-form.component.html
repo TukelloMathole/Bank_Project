@@ -1,0 +1,302 @@
+<div class="flex justify-center items-center bg-slate-600">
+  <form #registrationForm="ngForm" (ngSubmit)="submitForm()" class="w-1/2 m-5">
+    <div *ngIf="currentStep === 1" class="w-full md:w-3/4 mx-auto">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="text-2xl font-bold mb-4">Registration Form</h2>
+        <div class="mb-4">
+          <label
+            for="FirstName"
+            class="block text-gray-700 text-sm font-bold mb-2"
+            >First Name:</label
+          >
+          <input
+            type="text"
+            id="FirstName"
+            name="FirstName"
+            required
+            [(ngModel)]="formData.firstName"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="LastName" class="block text-sm font-medium text-gray-700"
+            >Last Name:</label
+          >
+          <input
+            type="text"
+            id="LastName"
+            name="LastName"
+            required
+            [(ngModel)]="formData.lastName"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="dob" class="block text-sm font-medium text-gray-700"
+            >Date of Birth:</label
+          >
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            [(ngModel)]="formData.dob"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="IDNumber" class="block text-sm font-medium text-gray-700"
+            >Identity Number:</label
+          >
+          <input
+            type="text"
+            id="IDNumber"
+            name="IDNumber"
+            required
+            [(ngModel)]="formData.IDNumber"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="Country" class="block text-sm font-medium text-gray-700"
+            >Country:</label
+          >
+          <input
+            type="text"
+            id="Country"
+            name="Country"
+            required
+            [(ngModel)]="formData.country"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="Province" class="block text-sm font-medium text-gray-700"
+            >Province:</label
+          >
+          <input
+            type="text"
+            id="Province"
+            name="Province"
+            required
+            [(ngModel)]="formData.province"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="City" class="block text-sm font-medium text-gray-700"
+            >City:</label
+          >
+          <input
+            type="text"
+            id="City"
+            name="City"
+            required
+            [(ngModel)]="formData.city"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="Surbub" class="block text-sm font-medium text-gray-700"
+            >Suburb:</label
+          >
+          <input
+            type="text"
+            id="Surbub"
+            name="Surbub"
+            required
+            [(ngModel)]="formData.suburb"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="Street" class="block text-sm font-medium text-gray-700"
+            >Street:</label
+          >
+          <input
+            type="text"
+            id="Street"
+            name="Street"
+            required
+            [(ngModel)]="formData.street"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="PostalCode"
+            class="block text-sm font-medium text-gray-700"
+            >Postal Code:</label
+          >
+          <input
+            type="text"
+            id="PostalCode"
+            name="PostalCode"
+            required
+            [(ngModel)]="formData.postalCode"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="HouseNumber"
+            class="block text-sm font-medium text-gray-700"
+            >House Number:</label
+          >
+          <input
+            type="text"
+            id="HouseNumber"
+            name="HouseNumber"
+            required
+            [(ngModel)]="formData.houseNumber"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            [(ngModel)]="formData.email"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="PhoneNumber"
+            class="block text-sm font-medium text-gray-700"
+            >Phone Number:</label
+          >
+          <input
+            type="text"
+            id="PhoneNumber"
+            name="PhoneNumber"
+            required
+            [(ngModel)]="formData.phoneNumber"
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <button
+          type="button"
+          (click)="nextStep()"
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="currentStep === 2" class="mb-8 w-full md:w-1/2 mx-auto">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div class="mb-4">
+            <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              [(ngModel)]="formData.address"
+              class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+      
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Take a Selfie:</label>
+            <div class="relative w-full">
+              <video #videoElement class="w-full h-auto"></video>
+              <canvas #canvasElement class="absolute top-0 left-0 hidden"></canvas>
+            </div>
+            <button
+              (click)="takePicture()"
+              class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Take Picture
+            </button>
+          </div>
+      
+          <div class="flex justify-between">
+            <button
+              type="button"
+              (click)="previousStep()"
+              class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              (click)="nextStep()"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+      
+
+    <div *ngIf="currentStep === 3" class="mb-4">
+      <div class="mb-4">
+        <label for="phone" class="block mb-2">Phone:</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          [(ngModel)]="formData.phone"
+          class="border p-2 w-full"
+        />
+      </div>
+      <!-- Add more fields as needed for step 3 -->
+      <button
+        type="button"
+        (click)="previousStep()"
+        class="bg-gray-500 text-white px-4 py-2 rounded mr-4"
+      >
+        Previous
+      </button>
+      <button
+        type="button"
+        (click)="nextStep()"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Next
+      </button>
+    </div>
+
+    <div *ngIf="currentStep === 4" class="mb-4">
+      <div class="mb-4">
+        <label for="dob" class="block mb-2">Date of Birth:</label>
+        <input
+          type="date"
+          id="dob"
+          name="dob"
+          [(ngModel)]="formData.dob"
+          class="border p-2 w-full"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block mb-2">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          [(ngModel)]="formData.password"
+          class="border p-2 w-full"
+        />
+      </div>
+      <!-- Add more fields as needed for step 4 -->
+      <button
+        type="button"
+        (click)="previousStep()"
+        class="bg-gray-500 text-white px-4 py-2 rounded mr-4"
+      >
+        Previous
+      </button>
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
+        Register
+      </button>
+    </div>
+  </form>
+</div>
