@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-registration-form',
@@ -9,14 +9,47 @@ export class RegistrationFormComponent implements AfterViewInit {
   currentStep: number = 1;
   formData: any = {};
   showPreview: boolean = false;
-  capturedImage: any;
-  @ViewChild('canvas') canvas?: ElementRef<HTMLCanvasElement>;
-  @ViewChild('video') video?: ElementRef<HTMLVideoElement>;
+  selfieDataUrl: string | undefined;
+  isCameraStarted: boolean = false;
+
+  @ViewChild('video') videoElement!: ElementRef;
+  @ViewChild('canvas') canvas!: ElementRef;
+  videoWidth: number = 0;
+  videoHeight: number = 0;
 
   constructor() {}
 
-  ngAfterViewInit(): void {
-    this.initializeCamera();
+  ngAfterViewInit() {
+    // Call startCamera() only after ViewChild references are initialized
+    this.startCamera();
+  }
+
+  async startCamera() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      this.videoElement.nativeElement.srcObject = stream;
+      this.videoElement.nativeElement.play();
+      this.videoWidth = this.videoElement.nativeElement.videoWidth;
+      this.videoHeight = this.videoElement.nativeElement.videoHeight;
+      this.isCameraStarted = true; // Update flag to indicate camera is started
+    } catch (err: any) {
+      // Handle permission denied or other errors
+      console.error("Error accessing the camera: ", err);
+      if (err.name === 'NotAllowedError') {
+        // Handle permission denied error
+        console.error("Permission to access camera was denied by the user.");
+      } else {
+        // Handle other errors
+        console.error("Error accessing camera:", err);
+      }
+    }
+  }
+  
+
+  takeSelfie(): void {
+    const context = this.canvas.nativeElement.getContext('2d');
+    context.drawImage(this.videoElement.nativeElement, 0, 0, this.videoWidth, this.videoHeight);
+    this.selfieDataUrl = this.canvas.nativeElement.toDataURL('image/png');
   }
 
   nextStep(): void {
@@ -32,41 +65,10 @@ export class RegistrationFormComponent implements AfterViewInit {
   }
 
   submitForm(): void {
-    // Process form data here
+    // Process form data
     console.log(this.formData);
     // Reset form data and step
     this.formData = {};
     this.currentStep = 1;
-  }
-
-  initializeCamera() {
-    if (this.video && this.canvas) {
-      const videoElement = this.video.nativeElement;
-      const canvasElement = this.canvas.nativeElement;
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-          videoElement.srcObject = stream;
-        })
-        .catch(err => console.error(err));
-    }
-  }
-
-  takePicture() {
-    if (this.video && this.canvas) {
-      const videoElement = this.video.nativeElement;
-      const canvasElement = this.canvas.nativeElement;
-      const context = canvasElement.getContext('2d');
-      if (context) {
-        context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-        const imageData = canvasElement.toDataURL('image/png');
-        // Now you have the image data, you can upload it or perform further actions.
-        console.log(imageData);
-        // Optionally, you can display the captured image
-        this.capturedImage = imageData;
-        this.showPreview = true;
-      } else {
-        console.error('Failed to get 2D context for canvas');
-      }
-    }
   }
 }
