@@ -190,85 +190,91 @@
     </div>
 
     <div *ngIf="currentStep === 2" class="mb-8 w-full md:w-1/2 mx-auto">
-  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <!-- Start Camera button -->
-    
-    
-    <!-- Navigation buttons -->
-    <div class="flex justify-between">
-      <button type="button" (click)="previousStep()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Previous
-      </button>
-      <button type="button" (click)="nextStep()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Next
-      </button>
-    </div>
-  </div>
-</div>
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Account Type</label>
+          <select [(ngModel)]="selectedAccountType" name="accountType" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="" disabled selected>Select an account type</option>
+            <option *ngFor="let type of accountTypes" [value]="type.toLowerCase()">{{ type }}</option>
+          </select>
+        </div>
 
-      
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">PIN</label>
+          <input [(ngModel)]="pin1" name="pin1" type="password" placeholder="Enter PIN" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
 
-    <div *ngIf="currentStep === 3" class="mb-4">
-      <div class="mb-4">
-        <label for="phone" class="block mb-2">Phone:</label>
-        <input
-          type="text"
-          id="phone"
-          name="phone"
-          [(ngModel)]="formData.phone"
-          class="border p-2 w-full"
-        />
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Confirm PIN</label>
+          <input [(ngModel)]="pin2" name="pin2" type="password" placeholder="Confirm PIN" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <div class="flex justify-between">
+          <button
+            type="button"
+            (click)="previousStep()"
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Previous
+          </button>
+          <button
+            type="button"
+            (click)="nextStep()"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Next
+          </button>
+        </div>
       </div>
-      <!-- Add more fields as needed for step 3 -->
-      <button
-        type="button"
-        (click)="previousStep()"
-        class="bg-gray-500 text-white px-4 py-2 rounded mr-4"
-      >
-        Previous
-      </button>
-      <button
-        type="button"
-        (click)="nextStep()"
-        class="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Next
-      </button>
+    </div>
+    <div *ngIf="currentStep === 3" class="mb-8 w-full md:w-1/2 mx-auto">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Email (Username)</label>
+          <p>The email you entered: {{ formData.email }}</p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+          <input
+            type="password"
+            [(ngModel)]="formData.password"
+            name="password"
+            required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your password"
+          >
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
+          <input
+            type="password"
+            [(ngModel)]="formData.confirmPassword"
+            name="confirmPassword"
+            required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Confirm your password"
+          >
+        </div>
+
+        <div class="flex justify-between">
+          <button
+            type="button"
+            (click)="previousStep()"
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Previous
+          </button>
+          <button
+            type="submit"
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Register
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div *ngIf="currentStep === 4" class="mb-4">
-      <div class="mb-4">
-        <label for="dob" class="block mb-2">Date of Birth:</label>
-        <input
-          type="date"
-          id="dob"
-          name="dob"
-          [(ngModel)]="formData.dob"
-          class="border p-2 w-full"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="password" class="block mb-2">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          required
-          [(ngModel)]="formData.password"
-          class="border p-2 w-full"
-        />
-      </div>
-      <!-- Add more fields as needed for step 4 -->
-      <button
-        type="button"
-        (click)="previousStep()"
-        class="bg-gray-500 text-white px-4 py-2 rounded mr-4"
-      >
-        Previous
-      </button>
-      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
-        Register
-      </button>
-    </div>
   </form>
 </div>

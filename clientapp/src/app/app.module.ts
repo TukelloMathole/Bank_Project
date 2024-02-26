@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { WebcamModule } from 'ngx-webcam';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,7 @@ import { RegistrationFormComponent } from './Components/registration-form/regist
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    WebcamModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
