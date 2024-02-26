@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-registration-form',
@@ -9,47 +9,11 @@ export class RegistrationFormComponent implements AfterViewInit {
   currentStep: number = 1;
   formData: any = {};
   showPreview: boolean = false;
-  selfieDataUrl: string | undefined;
-  isCameraStarted: boolean = false;
-
-  @ViewChild('video') videoElement!: ElementRef;
-  @ViewChild('canvas') canvas!: ElementRef;
-  videoWidth: number = 0;
-  videoHeight: number = 0;
 
   constructor() {}
 
-  ngAfterViewInit() {
-    // Call startCamera() only after ViewChild references are initialized
-    this.startCamera();
-  }
-
-  async startCamera() {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      this.videoElement.nativeElement.srcObject = stream;
-      this.videoElement.nativeElement.play();
-      this.videoWidth = this.videoElement.nativeElement.videoWidth;
-      this.videoHeight = this.videoElement.nativeElement.videoHeight;
-      this.isCameraStarted = true; // Update flag to indicate camera is started
-    } catch (err: any) {
-      // Handle permission denied or other errors
-      console.error("Error accessing the camera: ", err);
-      if (err.name === 'NotAllowedError') {
-        // Handle permission denied error
-        console.error("Permission to access camera was denied by the user.");
-      } else {
-        // Handle other errors
-        console.error("Error accessing camera:", err);
-      }
-    }
-  }
-  
-
-  takeSelfie(): void {
-    const context = this.canvas.nativeElement.getContext('2d');
-    context.drawImage(this.videoElement.nativeElement, 0, 0, this.videoWidth, this.videoHeight);
-    this.selfieDataUrl = this.canvas.nativeElement.toDataURL('image/png');
+  ngAfterViewInit(): void {
+    // Implement any logic that needs to be executed after the view is initialized
   }
 
   nextStep(): void {

@@ -192,29 +192,7 @@
     <div *ngIf="currentStep === 2" class="mb-8 w-full md:w-1/2 mx-auto">
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <!-- Start Camera button -->
-    <div class="mb-4" *ngIf="!isCameraStarted">
-      <button type="button" (click)="startCamera()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Start Camera
-      </button>
-    </div>
-
-    <!-- Webcam stream -->
-    <video #video *ngIf="isCameraStarted"></video>
     
-    <!-- Canvas to capture selfie -->
-    <canvas #canvas style="display: none;"></canvas>
-
-    <!-- Take selfie button -->
-    <div class="mb-4" *ngIf="isCameraStarted">
-      <button type="button" (click)="takeSelfie()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Take Selfie
-      </button>
-    </div>
-
-    <!-- Display selfie if available -->
-    <div *ngIf="selfieDataUrl">
-      <img [src]="selfieDataUrl" alt="Selfie" class="rounded border border-gray-300" style="max-width: 100%;">
-    </div>
     
     <!-- Navigation buttons -->
     <div class="flex justify-between">
