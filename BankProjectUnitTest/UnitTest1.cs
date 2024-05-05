@@ -1,11 +1,10 @@
+﻿using Xunit;
+using bank_App.Utils;
+
 namespace BankProjectUnitTest
 {
-    public class UnitTest1
+    public class AccountGeneratorTests
     {
-        [Fact]
-        public void Test1()
-        {
-
-        }
+        // make unit test for cust and account number
     }
 }
