@@ -17,6 +17,11 @@ export class RegistrationFormComponent implements AfterViewInit {
 
   constructor(private http: HttpClient) {}
 
+  idType: string = 'SA'; // Default to South African ID Number
+
+toggleIDType() {
+  // Implement your logic to toggle between South African ID and foreign passport
+}
   ngAfterViewInit(): void {
     // Implement any logic that needs to be executed after the view is initialized
   }
@@ -41,7 +46,18 @@ export class RegistrationFormComponent implements AfterViewInit {
       this.currentStep--;
     }
   }
-
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      // Read the selected file as a data URL
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        // Set the data URL as the value of formData.idImage
+        this.formData.idImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
   submitForm(): void {
     // URL where you want to post the form data
     const url = 'https://localhost:7066/BankAccountRegistration';

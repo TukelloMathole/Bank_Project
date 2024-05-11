@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "BankProjectUnitTest\\UnitTest1.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\BankProjectUnitTest\\UnitTest1.cs",
               "RelativeToolTip": "BankProjectUnitTest\\UnitTest1.cs",
-              "ViewState": "AQIAAAAAAACgzMzMzMwnwAoAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-05T10:08:40.74Z",
               "EditorCaption": ""
@@ -59,8 +59,7 @@
               "RelativeToolTip": "bankWebapi\\Model\\AccountInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T09:43:28.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-05T09:43:28.252Z"
             },
             {
               "$type": "Document",
@@ -72,8 +71,7 @@
               "RelativeToolTip": "bankWebapi\\Utils\\AccountGenerator.cs",
               "ViewState": "AQIAAAYAAACAMzMzM7McwAoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T10:48:37.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-04T10:48:37.184Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "bankWebapi\\Context\\DbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T08:49:59.126Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-04T08:49:59.126Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "bankWebapi\\Model\\BankAccountRegistrationModel.cs",
               "ViewState": "AQIAAAEAAAA4MzMzM9MwwA4AAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T10:37:57.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T10:37:57.606Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "bankWebapi\\Controllers\\BankAccountRegistrationController.cs",
               "ViewState": "AQIAAA8AAAAAmpmZmZkNwCAAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T10:35:01.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T10:35:01.092Z"
             }
           ]
         }
