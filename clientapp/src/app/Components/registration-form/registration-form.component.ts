@@ -1,5 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { WebcamImage } from 'ngx-webcam';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-registration-form',
@@ -14,6 +16,18 @@ export class RegistrationFormComponent implements AfterViewInit {
   selectedAccountType!: string;
   pin1!: string;
   pin2!: string;
+  triggerObservable = new Subject<void>();
+  capturedImage: string | undefined;
+
+  // Handle image capture
+  handleImageCapture(webcamImage: WebcamImage) {
+    this.capturedImage = webcamImage.imageAsDataUrl;
+  }
+
+  // Method to trigger image capture
+  captureImage() {
+    this.triggerObservable.next();
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -25,6 +39,8 @@ toggleIDType() {
   ngAfterViewInit(): void {
     // Implement any logic that needs to be executed after the view is initialized
   }
+
+
 
   nextStep(): void {
     if (this.currentStep < 4) {
