@@ -5,13 +5,13 @@
     <div class="text-white text-xl font-bold">Your Website Name</div>
     <div class="flex items-center space-x-4">
       <a
-        
+
         (click)="openSection('account')"
         class="text-white hover:text-gray-300 transition duration-300"
         >Accounts</a
       >
       <a
-        
+
         (click)="openSection('loan')"
         class="text-white hover:text-gray-300 transition duration-300"
         >Loans</a
@@ -37,16 +37,16 @@
               <p>{{ accountType }}</p>
             </div>
           </div>
-          
+
       </ng-container>
-  
+
       <ng-container *ngIf="selectedSection === 'loan'">
         <!-- this section must include other relavant informatoin about the bant etc -->
         <div class="bg-blue-500 flex flex-col text-black">
           <p>This is the content for Section 2.</p>
         </div>
       </ng-container>
-  
+
       <form (submit)="login()" class="flex flex-col items-center">
         <!-- Add your login form fields here -->
         <!-- in the log in include how the customer want to log on the system like personal, business, investment or shares -->
@@ -64,5 +64,5 @@
       </button>
     </div>
   </div>
-  
+
 

@@ -18,6 +18,9 @@ export class RegistrationFormComponent implements AfterViewInit {
   pin2!: string;
   triggerObservable = new Subject<void>();
   capturedImage: string | undefined;
+  idType: string = 'SA'; // Default to South African ID Number
+
+  constructor(private http: HttpClient) { }
 
   // Handle image capture
   handleImageCapture(webcamImage: WebcamImage) {
@@ -29,32 +32,40 @@ export class RegistrationFormComponent implements AfterViewInit {
     this.triggerObservable.next();
   }
 
-  constructor(private http: HttpClient) {}
+  // Method to send images to backend API
+  sendImagesToBackend() {
+    console.log("verifying")
+    // Prepare data to send to the API
+    const imageData = {
+      capturedImage: this.capturedImage,
+      idImage: this.formData.idImage
+    };
 
-  idType: string = 'SA'; // Default to South African ID Number
+    // Send data to the backend API
+    this.http.post<any>('your-api-url', imageData).subscribe(
+      response => {
+        console.log('API Response:', response);
+        // Handle API response as needed
+      },
+      error => {
+        console.error('API Error:', error);
+        // Handle API error as needed
+      }
+    );
+  }
 
-toggleIDType() {
-  // Implement your logic to toggle between South African ID and foreign passport
-}
+  toggleIDType() {
+    // Implement your logic to toggle between South African ID and foreign passport
+  }
+
   ngAfterViewInit(): void {
     // Implement any logic that needs to be executed after the view is initialized
   }
-
-
 
   nextStep(): void {
     if (this.currentStep < 4) {
       this.currentStep++;
     }
-    // Check if both pins are entered and match
-    // if (this.pin1 && this.pin2 && this.pin1 === this.pin2) {
-    //   // If the pins match, proceed to the next step
-    //   // Add your logic for navigating to the next step here
-    // } else {
-    //   // If the pins don't match, show an error or handle it accordingly
-    //   console.error("Pins don't match");
-    //   // You can add your error handling logic here
-    // }
   }
 
   previousStep(): void {
@@ -62,6 +73,7 @@ toggleIDType() {
       this.currentStep--;
     }
   }
+
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -74,33 +86,34 @@ toggleIDType() {
       reader.readAsDataURL(file);
     }
   }
+
   submitForm(): void {
     // URL where you want to post the form data
     const url = 'https://localhost:7066/BankAccountRegistration';
 
     // Make the HTTP POST request with the form data
-    this.http.post(url, this.formData, { responseType: 'text' }) // Specify responseType as text
-  .subscribe(
-    (response: any) => {
-      // Handle successful response here
-      console.log('Response:', response);
-      // Since the response is in text format, you can directly check the response text
-      if (response && response.includes('registered successfully')) {
-        // Registration successful
-        console.log('Registration successful');
-        // Optionally, reset form data
-        this.formData = {};
-      } else {
-        // Handle other cases where the response is unexpected
-        console.error('Unexpected response:', response);
-      }
-    },
-    (error: HttpErrorResponse) => {
-      // Handle error here
-      console.error('Error submitting form:', error);
-      // Optionally, reset form data on error
-      // this.formData = {};
-    }
-  );
+    this.http.post(url, this.formData, { responseType: 'text' })
+      .subscribe(
+        (response: any) => {
+          // Handle successful response here
+          console.log('Response:', response);
+          // Since the response is in text format, you can directly check the response text
+          if (response && response.includes('registered successfully')) {
+            // Registration successful
+            console.log('Registration successful');
+            // Optionally, reset form data
+            this.formData = {};
+          } else {
+            // Handle other cases where the response is unexpected
+            console.error('Unexpected response:', response);
+          }
+        },
+        (error: HttpErrorResponse) => {
+          // Handle error here
+          console.error('Error submitting form:', error);
+          // Optionally, reset form data on error
+          // this.formData = {};
+        }
+      );
   }
 }
