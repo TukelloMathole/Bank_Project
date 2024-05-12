@@ -3,7 +3,6 @@ using bank_App.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static BankAccountRegistrationModel;
 
 namespace bank_App.Controllers
 {
@@ -19,9 +18,9 @@ namespace bank_App.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BankAccountRegistration>>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<UserPersonalInformation>>> GetCustomers()
         {
-            return await _context.BankAccountRegistration.ToListAsync();
+            return await _context.UserPersonalInformation.ToListAsync();
         }
     }
 }

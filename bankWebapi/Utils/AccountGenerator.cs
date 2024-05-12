@@ -14,7 +14,7 @@ namespace bank_App.Utils
             {
                 using (var context = new AppDbContext())
                 {
-                    var lastCustomer = context.BankAccountRegistration
+                    var lastCustomer = context.UserPersonalInformation
                         .OrderByDescending(b => b.Customer_ID)
                         .FirstOrDefault();
 
@@ -51,7 +51,7 @@ namespace bank_App.Utils
             {
                 using (var context = new AppDbContext())
                 {
-                    var lastAccount = context.AccountInfo
+                    var lastAccount = context.Accounts
                         .Where(a => a.Account_Type == type)
                         .OrderByDescending(a => a.Account_Number)
                         .FirstOrDefault();

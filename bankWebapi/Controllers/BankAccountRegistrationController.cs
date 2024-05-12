@@ -3,8 +3,9 @@ using System;
 using bank_App.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using static BankAccountRegistrationModel;
- 
+
+using bank_App.Model;
+
 [ApiController]
 [Route("[controller]")]
 public class BankAccountRegistrationController : ControllerBase
@@ -18,7 +19,7 @@ public class BankAccountRegistrationController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> RegisterPersonalInfo(BankAccountRegistration personalInfo)
+    public async Task<IActionResult> RegisterPersonalInfo(UserPersonalInformation personalInfo)
     {
         if (personalInfo == null)
         {
@@ -37,7 +38,7 @@ public class BankAccountRegistrationController : ControllerBase
         try
         {
             // Add the personalInfo object to the database
-            _context.BankAccountRegistration.Add(personalInfo);
+            _context.UserPersonalInformation.Add(personalInfo);
             await _context.SaveChangesAsync();
 
             return Ok("Personal information registered successfully. Customer ID: " + customerID + ", Account Number: " );

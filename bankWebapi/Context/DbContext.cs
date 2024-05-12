@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
-using static BankAccountRegistrationModel;
 using bank_App.Model;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<BankAccountRegistration> BankAccountRegistration { get; set; }
-    public DbSet<AccountInfo> AccountInfo { get; set; }
+    public DbSet<UserPersonalInformation> UserPersonalInformation { get; set; }
+    public DbSet<UserContactInformation> UserContactInformation { get; set; }
+    public DbSet<Accounts> Accounts { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -25,12 +26,13 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<BankAccountRegistration>().HasKey(p => p.ID);
-        modelBuilder.Entity<AccountInfo>().HasKey(p => p.Account_ID);
+        modelBuilder.Entity<UserPersonalInformation>().HasKey(p => p.ID);
+        modelBuilder.Entity<UserContactInformation>().HasKey(p => p.Customer_ID);
+        modelBuilder.Entity<Accounts>().HasKey(p => p.Account_ID);
     }
     public interface IAppDbContext : IDisposable
     {
-        IQueryable<BankAccountRegistration> BankAccountRegistration { get; }
+        IQueryable<UserPersonalInformation> UserPersonalInformation { get; }
     }
 
 }
