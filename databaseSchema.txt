@@ -1,30 +1,43 @@
-CREATE TABLE BankAccountRegistration (
+CREATE TABLE UserPersonalInformation (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName NVARCHAR(100),
+    MiddleName NVARCHAR(100),
     LastName NVARCHAR(100),
     DateOfBirth DATE,
+    Gender VARCHAR(50),
+    Nationality VARCHAR(100),
     IDNumber NVARCHAR(50),
+    Passport NVARCHAR(100),
+    Customer_ID NVARCHAR(10) UNIQUE
+);
+
+CREATE TABLE UserContactInformation (
+    Customer_ID NVARCHAR(10) PRIMARY KEY, -- Assuming Customer_ID is unique per user
     Country NVARCHAR(100),
     Province NVARCHAR(100),
     City NVARCHAR(100),
-    Surbub NVARCHAR(100),
+    Suburb NVARCHAR(100),
     Street NVARCHAR(100),
     PostalCode NVARCHAR(20),
     HouseNumber NVARCHAR(20),
     Email NVARCHAR(100),
     PhoneNumber NVARCHAR(20),
-    Customer_ID NVARCHAR(10) UNIQUE
+    FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
 
-CREATE TABLE AccountInfo (
-    Account_ID INT IDENTITY(1,1) PRIMARY KEY,
-    Customer_ID NVARCHAR(10) UNIQUE,
+CREATE TABLE FinancialInformation (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+    IncomeDetails DECIMAL(18,2),
+    EmploymentStatus NVARCHAR(100),
+    FinancialInstitutionDetails NVARCHAR(100),
+    TaxIdNumber NVARCHAR(50),
+    AccountType NVARCHAR(50),
     Account_Number NVARCHAR(20) UNIQUE,
-    Pin_Number NVARCHAR(20),
-    Account_Type NVARCHAR(100),
+    PIN NVARCHAR(50),
     Balance DECIMAL(18, 2),
     Account_Status NVARCHAR(50),
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
+    FOREIGN KEY (UserID) REFERENCES UserPersonalInformation(ID)
 );
 
 CREATE TABLE SecurityAuthentication (
@@ -33,10 +46,22 @@ CREATE TABLE SecurityAuthentication (
     Password NVARCHAR(100),
     Role NVARCHAR(50),
     Customer_ID NVARCHAR(10) UNIQUE,
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
 
+CREATE TABLE Account_Table (
+    Account_ID INT IDENTITY(1,1) PRIMARY KEY,
+    Customer_ID NVARCHAR(10),
+    Account_Number NVARCHAR(20),
+    Expiry_Date DATE,
+    CVV NVARCHAR(4),
+    Card_Type NVARCHAR(50),
+    Status NVARCHAR(50),
+    FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
+);
 
+ALTER TABLE Account_Table
+ADD CONSTRAINT UC_Account_Number UNIQUE(Account_Number);
 
 CREATE TABLE TransactionTable (
     Transaction_ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -45,8 +70,8 @@ CREATE TABLE TransactionTable (
     Amount DECIMAL(18, 2),
     Transaction_Date DATETIME,
     Customer_ID NVARCHAR(10),
-    FOREIGN KEY (Account_Number) REFERENCES AccountInfo(Account_Number),
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
+    CONSTRAINT FK_Transaction_Account FOREIGN KEY (Account_Number) REFERENCES Account_Table(Account_Number),
+    CONSTRAINT FK_Transaction_UserPersonalInformation FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
 
 
@@ -59,18 +84,14 @@ CREATE TABLE AuditTrial_Table (
     FOREIGN KEY (User_ID) REFERENCES SecurityAuthentication(User_ID)
 );
 
-
-
-
 CREATE TABLE Payment_Schedule (
     Schedule_ID INT IDENTITY(1,1) PRIMARY KEY,
     Schedule_Name NVARCHAR(100),
     Description NVARCHAR(MAX),
     Frequency NVARCHAR(100),
     Account_ID INT,
-    FOREIGN KEY (Account_ID) REFERENCES AccountInfo(Account_ID)
+    FOREIGN KEY (Account_ID) REFERENCES Account_Table(Account_ID)
 );
-
 
 CREATE TABLE LoanApplication_Table (
     Application_ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -78,19 +99,9 @@ CREATE TABLE LoanApplication_Table (
     Loan_Type NVARCHAR(100),
     Amount DECIMAL(18, 2),
     Application_Date DATE,
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
 
-CREATE TABLE Account_Table (
-    Account_ID INT IDENTITY(1,1) PRIMARY KEY,
-    Customer_ID NVARCHAR(10),
-    Account_Number NVARCHAR(20),
-    Expiry_Date DATE,
-    CVV NVARCHAR(4),
-    Card_Type NVARCHAR(50),
-    Status NVARCHAR(50),
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
-);
 
 
 CREATE TABLE Loan_Table (
@@ -103,9 +114,8 @@ CREATE TABLE Loan_Table (
     Payment_Schedule NVARCHAR(100),
     Date_Issued DATE,
     Account_Number NVARCHAR(20),
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
-
 
 CREATE TABLE Notification_Table (
     Notification_ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -113,5 +123,5 @@ CREATE TABLE Notification_Table (
     Notification_Type NVARCHAR(100),
     Notification_Date DATE,
     Notification_Message NVARCHAR(255),
-    FOREIGN KEY (Customer_ID) REFERENCES BankAccountRegistration(Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );

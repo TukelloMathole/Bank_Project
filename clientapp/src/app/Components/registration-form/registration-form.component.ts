@@ -111,6 +111,7 @@ export class RegistrationFormComponent implements AfterViewInit {
         (error: HttpErrorResponse) => {
           // Handle error here
           console.error('Error submitting form:', error);
+          console.log(this.formData);
           // Optionally, reset form data on error
           // this.formData = {};
         }

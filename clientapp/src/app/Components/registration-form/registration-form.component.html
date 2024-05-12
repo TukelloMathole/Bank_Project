@@ -21,8 +21,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
           <div class="mb-2">
-            <label for="dob" class="block text-gray-800 text-sm font-medium mb-1">Date of Birth</label>
-            <input type="date" id="dob" name="dob" [(ngModel)]="formData.dob" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label for="DateOfBirth" class="block text-gray-800 text-sm font-medium mb-1">Date of Birth</label>
+            <input type="date" id="DateOfBirth" name="DateOfBirth" [(ngModel)]="formData.dob" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
 
           <div class="mb-2">
@@ -97,11 +97,17 @@
     <div *ngIf="currentStep === 2" class="mb-8">
       <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <h2 class="text-xl font-bold mb-4">Contact Information</h2>
-
-        <div class="mb-4">
-          <label for="Province" class="block text-gray-700 text-sm font-bold mb-2">Province:</label>
-          <input type="text" id="Province" name="Province" [(ngModel)]="formData.province" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        <div class="grid grid-cols-2 gap-4">
+          <div class="mb-4">
+            <label for="country" class="block text-gray-700 text-sm font-bold mb-2">Country:</label>
+            <input type="text" id="country" name="country" [(ngModel)]="formData.country" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+          <div class="mb-4">
+            <label for="Province" class="block text-gray-700 text-sm font-bold mb-2">Province:</label>
+            <input type="text" id="Province" name="Province" [(ngModel)]="formData.province" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
         </div>
+
         <div class="mb-4">
           <label for="City" class="block text-sm font-medium text-gray-700">City:</label>
           <input type="text" id="City" name="City" [(ngModel)]="formData.city" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />

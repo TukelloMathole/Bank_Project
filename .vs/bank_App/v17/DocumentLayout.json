@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE4C5CC5-D4D3-428E-B71E-3793A955A005}|BankProjectUnitTest\\BankProjectUnitTest.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankprojectunittest\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE4C5CC5-D4D3-428E-B71E-3793A955A005}|BankProjectUnitTest\\BankProjectUnitTest.csproj|solutionrelative:bankprojectunittest\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\utils\\accountgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|solutionrelative:bankwebapi\\utils\\accountgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\controllers\\bankaccountregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|solutionrelative:bankwebapi\\controllers\\bankaccountregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\model\\bankaccountregistrationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|solutionrelative:bankwebapi\\model\\bankaccountregistrationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\controllers\\bankaccountregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|solutionrelative:bankwebapi\\controllers\\bankaccountregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\context\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|solutionrelative:bankwebapi\\context\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\utils\\accountgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|solutionrelative:bankwebapi\\utils\\accountgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1601BEAE-4E5D-4BA7-AE76-0FF9F9958D96}|bankWebapi\\bank_App.csproj|c:\\users\\user\\documents\\projects\\dotnet\\bank_app\\bankwebapi\\model\\accountinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,24 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\BankProjectUnitTest\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "BankProjectUnitTest\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\BankProjectUnitTest\\UnitTest1.cs",
-              "RelativeToolTip": "BankProjectUnitTest\\UnitTest1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T10:08:40.74Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "AccountInfo.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Model\\AccountInfo.cs",
               "RelativeDocumentMoniker": "bankWebapi\\Model\\AccountInfo.cs",
@@ -59,23 +42,25 @@
               "RelativeToolTip": "bankWebapi\\Model\\AccountInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T09:43:28.252Z"
+              "WhenOpened": "2024-05-05T09:43:28.252Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AccountGenerator.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Utils\\AccountGenerator.cs",
               "RelativeDocumentMoniker": "bankWebapi\\Utils\\AccountGenerator.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Utils\\AccountGenerator.cs",
               "RelativeToolTip": "bankWebapi\\Utils\\AccountGenerator.cs",
-              "ViewState": "AQIAAAYAAACAMzMzM7McwAoAAAAIAAAA",
+              "ViewState": "AQIAAAwAAACAMzMzMzMvwAoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T10:48:37.184Z"
+              "WhenOpened": "2024-05-04T10:48:37.184Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "DbContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Context\\DbContext.cs",
               "RelativeDocumentMoniker": "bankWebapi\\Context\\DbContext.cs",
@@ -83,11 +68,12 @@
               "RelativeToolTip": "bankWebapi\\Context\\DbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T08:49:59.126Z"
+              "WhenOpened": "2024-05-04T08:49:59.126Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "BankAccountRegistrationModel.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Model\\BankAccountRegistrationModel.cs",
               "RelativeDocumentMoniker": "bankWebapi\\Model\\BankAccountRegistrationModel.cs",
@@ -95,19 +81,21 @@
               "RelativeToolTip": "bankWebapi\\Model\\BankAccountRegistrationModel.cs",
               "ViewState": "AQIAAAEAAAA4MzMzM9MwwA4AAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T10:37:57.606Z"
+              "WhenOpened": "2024-05-01T10:37:57.606Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "BankAccountRegistrationController.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Controllers\\BankAccountRegistrationController.cs",
               "RelativeDocumentMoniker": "bankWebapi\\Controllers\\BankAccountRegistrationController.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\Controllers\\BankAccountRegistrationController.cs",
               "RelativeToolTip": "bankWebapi\\Controllers\\BankAccountRegistrationController.cs",
-              "ViewState": "AQIAAA8AAAAAmpmZmZkNwCAAAAA6AAAA",
+              "ViewState": "AQIAAAkAAABAAAAAAEAlwCIAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T10:35:01.092Z"
+              "WhenOpened": "2024-05-01T10:35:01.092Z",
+              "EditorCaption": ""
             }
           ]
         }
