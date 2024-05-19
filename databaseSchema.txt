@@ -32,11 +32,6 @@ CREATE TABLE FinancialInformation (
     EmploymentStatus NVARCHAR(100),
     FinancialInstitutionDetails NVARCHAR(100),
     TaxIdNumber NVARCHAR(50),
-    AccountType NVARCHAR(50),
-    Account_Number NVARCHAR(20) UNIQUE,
-    PIN NVARCHAR(50),
-    Balance DECIMAL(18, 2),
-    Account_Status NVARCHAR(50),
     FOREIGN KEY (UserID) REFERENCES UserPersonalInformation(ID)
 );
 
@@ -56,7 +51,9 @@ CREATE TABLE Account_Table (
     Expiry_Date DATE,
     CVV NVARCHAR(4),
     Card_Type NVARCHAR(50),
-    Status NVARCHAR(50),
+	PIN NVARCHAR(50),
+	Balance DECIMAL(18, 2),
+	Status NVARCHAR(50),
     FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
 

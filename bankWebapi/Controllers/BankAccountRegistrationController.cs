@@ -1,17 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
-using bank_App.Utils;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
 using bank_App.Model;
+using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("[controller]")]
 public class BankAccountRegistrationController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private static readonly Random random = new Random();
 
     public BankAccountRegistrationController(AppDbContext context)
     {
@@ -19,33 +16,59 @@ public class BankAccountRegistrationController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> RegisterPersonalInfo(UserPersonalInformation personalInfo)
+    public async Task<IActionResult> RegisterPersonalInfo(BankRegistration BankRegistration)
     {
-        if (personalInfo == null)
+        if (BankRegistration == null)
         {
             return BadRequest("Invalid data provided.");
         }
-        string customerID = AccountGenerator.GenerateCustomerID();
-        //string accountNumber = AccountGenerator.GenerateAccountNumber(personalInfo.Account_Type);
-
-        // Remove the assignment of ID property
-        personalInfo.ID = 0;
-
-        // Assign generated IDs to the personalInfo object
-        personalInfo.Customer_ID = customerID;
-        //personalInfo.AccountNumber = accountNumber;
 
         try
         {
-            // Add the personalInfo object to the database
-            _context.UserPersonalInformation.Add(personalInfo);
+            // Create UserContactInformation entity
+           /* var userContact = new UserContactInformation
+            {
+                // Populate properties from personalInfo
+                // Note: You may need to adjust property mappings based on your actual model
+                Country = personalInfo.Country,
+                Province = personalInfo.Province,
+                City = personalInfo.City,
+                Suburb = personalInfo.Suburb,
+                Street = personalInfo.Street,
+                PostalCode = personalInfo.PostalCode,
+                HouseNumber = personalInfo.HouseNumber,
+                Email = personalInfo.Email,
+                PhoneNumber = personalInfo.PhoneNumber
+            };*/
+
+            // Add userContact to the context
+            //_context.UserContactInformation.Add(userContact);
             await _context.SaveChangesAsync();
 
-            return Ok("Personal information registered successfully. Customer ID: " + customerID + ", Account Number: " );
+            // Create SecurityAuthentication entity
+           /* var securityAuthentication = new SecurityAuthentication
+            {
+                // Populate properties from personalInfo
+                // Note: You may need to adjust property mappings based on your actual model
+                Password = BankRegistration.Password,
+                Role = BankRegistration.Role
+            };*/
+
+            // Add securityAuthentication to the context
+            /*_context.SecurityAuthentication.Add(securityAuthentication);
+            await _context.SaveChangesAsync();
+
+            // Populate other properties and save personalInfo to UserPersonalInformation table
+            // personalInfo.userContact = userContact; // Associate userContact with personalInfo
+            BankRegistration.Authentication = securityAuthentication; // Associate securityAuthentication with personalInfo
+            _context.UserPersonalInformation.Add(BankRegistration);
+            await _context.SaveChangesAsync();*/
+
+            return Ok("Personal information registered successfully.");
         }
         catch (Exception ex)
         {
-            return StatusCode(500, $"An error occurred while registering personal information: {ex.Message}");
+            return StatusCode(500, $"An error occurred while registering personal information: {ex}");
         }
     }
 }

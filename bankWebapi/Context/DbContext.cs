@@ -5,10 +5,11 @@ using bank_App.Model;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<UserPersonalInformation> UserPersonalInformation { get; set; }
+    public DbSet<BankRegistration> BankRegistration { get; set; }
     public DbSet<UserContactInformation> UserContactInformation { get; set; }
-    public DbSet<Accounts> Accounts { get; set; }
-    public DbSet<Transaction> Transactions { get; set; }
+    public DbSet<Account_Table> Account_Table { get; set; }
+    public DbSet<SecurityAuthentication> SecurityAuthentication { get; set; }
+    //public DbSet<Transaction> Transactions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -23,16 +24,15 @@ public class AppDbContext : DbContext
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserPersonalInformation>().HasKey(p => p.ID);
         modelBuilder.Entity<UserContactInformation>().HasKey(p => p.Customer_ID);
-        modelBuilder.Entity<Accounts>().HasKey(p => p.Account_ID);
+        modelBuilder.Entity<Account_Table>().HasKey(p => p.Account_ID);
+        modelBuilder.Entity<SecurityAuthentication>().HasKey(p => p.ID);
     }
     public interface IAppDbContext : IDisposable
     {
         IQueryable<UserPersonalInformation> UserPersonalInformation { get; }
     }
-
 }
