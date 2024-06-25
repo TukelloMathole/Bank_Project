@@ -125,5 +125,6 @@ CREATE TABLE Notification_Table (
 
 
 
-resert database DBCC CHECKIDENT ('your_table', RESEED, 0);
+DBCC CHECKIDENT ('UserPersonalInformation', RESEED, 0);
+
 

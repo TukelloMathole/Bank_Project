@@ -58,7 +58,6 @@ namespace bank_App.Controllers
             try
             {
                 _context.UserPersonalInformation.Add(user);
-                
                 _context.SaveChanges();
 
                 _context.UserContactInformation.Add(userContactInfo);
@@ -76,7 +75,7 @@ namespace bank_App.Controllers
                     user.IdNumber,
                     user.Passport,
                     user.Customer_ID,
-                    /*userContactInfo.Country,*/
+                    userContactInfo.Country,
                 });
             }
             catch (Exception ex)

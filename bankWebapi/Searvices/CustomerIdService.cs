@@ -33,7 +33,7 @@ public class CustomerIdService : ICustomerIdService
         }
 
         // Return a default value if no customer exists yet
-        return "CUS0001"; // Example: Starting ID if no users exist
+        return "CUS0000"; // Example: Starting ID if no users exist
     }
 
     // Helper method to extract number from Customer_ID

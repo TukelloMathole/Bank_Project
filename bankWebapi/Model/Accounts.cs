@@ -8,7 +8,6 @@ namespace bank_App.Model
 {
     public class Account_Table
     {
-        [Key]
         public int Account_ID { get; set; }
         public string Customer_ID { get; set; }
         public string Account_Number { get; set; }
