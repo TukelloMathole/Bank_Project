@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using bank_App.Model;
 using bank_App.DTOs;
 using System;
@@ -10,10 +10,12 @@ namespace bank_App.Controllers
     public class UserController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly ICustomerIdService _customerIdService;
 
-        public UserController(AppDbContext context)
+        public UserController(AppDbContext context, ICustomerIdService customerIdService)
         {
             _context = context;
+            _customerIdService = customerIdService;
         }
 
         [HttpPost("register")]
@@ -34,7 +36,7 @@ namespace bank_App.Controllers
                 Nationality = registrationDto.Nationality,
                 IdNumber = registrationDto.IdNumber,
                 Passport = registrationDto.passport, // Use lowercase property name
-                Customer_ID = registrationDto.Customer_ID
+                Customer_ID = _customerIdService.GenerateCustomerId()
             };
 
             try

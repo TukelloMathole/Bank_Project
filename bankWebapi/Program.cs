@@ -31,7 +31,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>();
 
 // Register IUserService here before calling builder.Build()
-//builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICustomerIdService, CustomerIdService>();
 /*builder.Services.AddScoped<RegistrationService>();*/
 
 var app = builder.Build();
