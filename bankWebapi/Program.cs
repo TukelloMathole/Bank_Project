@@ -2,7 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
-using bank_App.Services;
+//using bank_App.Services;
+using bank_App.Model; // Assuming AppDbContext is in this namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +31,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>();
 
 // Register IUserService here before calling builder.Build()
-builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<IUserService, UserService>();
+/*builder.Services.AddScoped<RegistrationService>();*/
 
 var app = builder.Build();
 

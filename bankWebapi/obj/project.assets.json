@@ -3851,24 +3851,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\tukel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\bank_App.csproj",
+      "projectUniqueName": "C:\\Users\\tukel\\Desktop\\New folder\\Bank_Project\\bankWebapi\\bank_App.csproj",
       "projectName": "bank_App",
-      "projectPath": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\bank_App.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\PROJECTS\\dotNet\\bank_App\\bankWebapi\\obj\\",
+      "projectPath": "C:\\Users\\tukel\\Desktop\\New folder\\Bank_Project\\bankWebapi\\bank_App.csproj",
+      "packagesPath": "C:\\Users\\tukel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tukel\\Desktop\\New folder\\Bank_Project\\bankWebapi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\tukel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3940,7 +3935,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

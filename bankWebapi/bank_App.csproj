@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Searvices\Interfaces\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 
