@@ -8,8 +8,8 @@ using Microsoft.Extensions.Logging.Console;
 public class AppDbContext : DbContext
 {
     public DbSet<UserPersonalInformation> UserPersonalInformation { get; set; }
-    /*public DbSet<UserContactInformation> UserContactInformation { get; set; }
-    public DbSet<SecurityAuthentication> SecurityAuthentication { get; set; }
+    public DbSet<UserContactInformation> UserContactInformation { get; set; }
+    /*public DbSet<SecurityAuthentication> SecurityAuthentication { get; set; }
     public DbSet<Account_Table> Account_Table { get; set; }*/
 
     public static readonly ILoggerFactory MyLoggerFactory
@@ -33,6 +33,7 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+        modelBuilder.Entity<UserContactInformation>()
+           .HasKey(u => u.Customer_ID);
     }
 }

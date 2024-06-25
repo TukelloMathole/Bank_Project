@@ -122,3 +122,8 @@ CREATE TABLE Notification_Table (
     Notification_Message NVARCHAR(255),
     FOREIGN KEY (Customer_ID) REFERENCES UserPersonalInformation(Customer_ID)
 );
+
+
+
+resert database DBCC CHECKIDENT ('your_table', RESEED, 0);
+

@@ -2,6 +2,7 @@
 using bank_App.Model;
 using bank_App.DTOs;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace bank_App.Controllers
 {
@@ -25,7 +26,7 @@ namespace bank_App.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            var customerId = _customerIdService.GenerateCustomerId();
             var user = new UserPersonalInformation
             {
                 FirstName = registrationDto.FirstName,
@@ -36,14 +37,32 @@ namespace bank_App.Controllers
                 Nationality = registrationDto.Nationality,
                 IdNumber = registrationDto.IdNumber,
                 Passport = registrationDto.passport, // Use lowercase property name
-                Customer_ID = _customerIdService.GenerateCustomerId()
+                Customer_ID = customerId,
+                
+            };
+
+            var userContactInfo = new UserContactInformation
+            {
+                Customer_ID = customerId,
+                Country = registrationDto.Country,
+                Province = registrationDto.Province,
+                City = registrationDto.City,
+                Suburb = registrationDto.Suburb,
+                Street = registrationDto.Street,
+                PostalCode = registrationDto.PostalCode,
+                HouseNumber = registrationDto.HouseNumber,
+                Email = registrationDto.Email,
+                PhoneNumber = registrationDto.PhoneNumber,
             };
 
             try
             {
                 _context.UserPersonalInformation.Add(user);
+                
                 _context.SaveChanges();
 
+                _context.UserContactInformation.Add(userContactInfo);
+                _context.SaveChanges();
                 // Return user details upon successful registration
                 return Ok(new
                 {
@@ -56,7 +75,8 @@ namespace bank_App.Controllers
                     user.Nationality,
                     user.IdNumber,
                     user.Passport,
-                    user.Customer_ID
+                    user.Customer_ID,
+                    /*userContactInfo.Country,*/
                 });
             }
             catch (Exception ex)

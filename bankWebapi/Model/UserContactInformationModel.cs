@@ -17,5 +17,7 @@ namespace bank_App.Model
         public string HouseNumber { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+
+
     }
 }
