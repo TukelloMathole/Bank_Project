@@ -9,8 +9,9 @@ public class AppDbContext : DbContext
 {
     public DbSet<UserPersonalInformation> UserPersonalInformation { get; set; }
     public DbSet<UserContactInformation> UserContactInformation { get; set; }
-    /*public DbSet<SecurityAuthentication> SecurityAuthentication { get; set; }
-    public DbSet<Account_Table> Account_Table { get; set; }*/
+    public DbSet<SecurityAuthentication> SecurityAuthentication { get; set; }
+    public DbSet<Account_Table> Account_Table { get; set; }
+    public DbSet<FinancialInformation> FinancialInformation { get; set; }
 
     public static readonly ILoggerFactory MyLoggerFactory
             = LoggerFactory.Create(builder => { builder.AddConsole(); });
@@ -35,5 +36,11 @@ public class AppDbContext : DbContext
     {
         modelBuilder.Entity<UserContactInformation>()
            .HasKey(u => u.Customer_ID);
+        modelBuilder.Entity<Account_Table>()
+           .HasKey(u => u.Account_ID);
+        modelBuilder.Entity<SecurityAuthentication>()
+           .HasKey(u => u.User_ID);
+        modelBuilder.Entity<FinancialInformation>()
+            .HasKey(u => u.ID);
     }
 }

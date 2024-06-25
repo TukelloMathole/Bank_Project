@@ -32,7 +32,7 @@ builder.Services.AddDbContext<AppDbContext>();
 
 // Register IUserService here before calling builder.Build()
 builder.Services.AddScoped<ICustomerIdService, CustomerIdService>();
-/*builder.Services.AddScoped<RegistrationService>();*/
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 

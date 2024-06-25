@@ -12,7 +12,7 @@ namespace bank_App.Model
         public string Customer_ID { get; set; }
         public string Account_Number { get; set; }
         public DateTime Expiry_Date { get; set; }
-        public int CVV { get; set; }
+        public string CVV { get; set; }
         public string Card_Type { get; set; }
         public string Status { get; set; }
         public string Pin { get; set; }
