@@ -1,7 +1,7 @@
 <div class="flex justify-center bg-slate-600 h-screen p-2 overflow-auto">
   <div class="w-full md:w-1/3 bg-white rounded-lg shadow-lg p-6 m-2">
     <!-- Left Box Content -->
-    <h2 class="text-2xl font-bold mb-4 text-gray-800">Bank name and logo</h2>
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Bank name and logo</h2>
   
     <!-- Buttons for Login and Support -->
     <div class="mb-6">
@@ -40,18 +40,18 @@
         <div class="bg-gray-100 rounded-lg p-4">
           <!-- Chat messages -->
           <div class="flex flex-col space-y-4">
-            <!-- Example of a chat message -->
-            <div class="flex items-start">
-              <div class="rounded-full bg-blue-500 text-white py-2 px-4 text-sm">Hello!</div>
-              <p class="ml-2 text-gray-800">Hi there! I need help with bank account registration.</p>
+            <!-- Example of a user chat message -->
+            <div class="flex items-end justify-end">
+              <div class="bg-blue-500 text-white py-2 px-4 rounded-lg text-sm max-w-xs">Hi there! I need help with bank account registration.</div>
+              <div class="ml-2 rounded-full bg-blue-500 text-white py-2 px-4 text-sm">You</div>
             </div>
-            <!-- Example of a response -->
+            <!-- Example of a chatbot response -->
             <div class="flex items-start">
-              <div class="rounded-full bg-gray-300 py-2 px-4 text-sm">Sure!</div>
-              <p class="ml-2 text-gray-800">Please provide your ID, proof of residence, and bank details.</p>
+              <div class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg text-sm max-w-xs">Sure! Please provide your ID, proof of residence, and bank details.</div>
+              <div class="ml-2 rounded-full bg-gray-300 text-gray-800 py-2 px-4 text-sm">ChatBot</div>
             </div>
           </div>
-  
+
           <!-- Input field for chat -->
           <div class="mt-4 flex">
             <input type="text" placeholder="Type your message..." class="flex-1 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -61,6 +61,8 @@
           </div>
         </div>
       </div>
+
+      
     </div>
   </div>
   
