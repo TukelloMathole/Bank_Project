@@ -10,7 +10,7 @@
         public string Nationality { get; set; }
         public string IdNumber { get; set; }
         public string passport { get; set; } // lowercase 'passport'
-        public string Customer_ID { get; set; }
+        /*public string Customer_ID { get; set; }*/
 
         public string Country { get; set; }
         public string Province { get; set; }

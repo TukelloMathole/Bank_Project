@@ -10,17 +10,28 @@ import { Subject } from 'rxjs';
 })
 export class RegistrationFormComponent implements AfterViewInit {
   currentStep: number = 1;
-  formData: any = {};
+  formData: any = {
+    username: '',
+    idNumber: '',
+    passport: ''
+  };
   showPreview: boolean = false;
   accountTypes: string[] = ['Personal', 'Business', 'Youth', 'Seniors'];
   selectedAccountType!: string;
-  pin1!: string;
+  pin!: string;
   pin2!: string;
   triggerObservable = new Subject<void>();
   capturedImage: string | undefined;
   idType: string = 'SA'; // Default to South African ID Number
 
+
+  
+
   constructor(private http: HttpClient) { }
+
+  get emailUser(): string {
+    return this.formData.email;
+  }
 
   // Handle image capture
   handleImageCapture(webcamImage: WebcamImage) {
@@ -42,7 +53,7 @@ export class RegistrationFormComponent implements AfterViewInit {
     };
 
     // Send data to the backend API
-    this.http.post<any>('your-api-url', imageData).subscribe(
+    this.http.post<any>('https://localhost:7066', imageData).subscribe(
       response => {
         console.log('API Response:', response);
         // Handle API response as needed
@@ -53,9 +64,13 @@ export class RegistrationFormComponent implements AfterViewInit {
       }
     );
   }
-
+  
   toggleIDType() {
-    // Implement your logic to toggle between South African ID and foreign passport
+    if (this.idType === 'SA') {
+      this.formData.passport = ' - ';
+    } else {
+      this.formData.idNumber = ' - ';
+    }
   }
 
   ngAfterViewInit(): void {
@@ -89,7 +104,14 @@ export class RegistrationFormComponent implements AfterViewInit {
 
   submitForm(): void {
     // URL where you want to post the form data
-    const url = 'https://localhost:7066/BankAccountRegistration';
+    const url = 'https://localhost:7066/api/User/register';
+    this.formData.username = this.formData.email;
+
+    if (this.idType === 'SA') {
+      this.formData.passport = " - ";
+    } else {
+      this.formData.idNumber = " - ";
+    }
 
     // Make the HTTP POST request with the form data
     this.http.post(url, this.formData, { responseType: 'text' })
@@ -98,11 +120,10 @@ export class RegistrationFormComponent implements AfterViewInit {
           // Handle successful response here
           console.log('Response:', response);
           // Since the response is in text format, you can directly check the response text
-          if (response && response.includes('registered successfully')) {
-            // Registration successful
+          if (response && response.includes('User registration successful')) {
+            
             console.log('Registration successful');
-            // Optionally, reset form data
-            this.formData = {};
+            
           } else {
             // Handle other cases where the response is unexpected
             console.error('Unexpected response:', response);

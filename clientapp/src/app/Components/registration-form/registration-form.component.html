@@ -53,8 +53,8 @@
             </div>
           </div>
           <div class="mb-2">
-            <label [for]="idType === 'SA' ? 'IDNumber' : 'PassportNumber'" class="block text-gray-800 text-sm font-medium mb-1">{{ idType === 'SA' ? 'ID Number' : 'Passport Number' }}</label>
-            <input [type]="idType === 'SA' ? 'text' : 'text'" [id]="idType === 'SA' ? 'IDNumber' : 'PassportNumber'" [name]="idType === 'SA' ? 'IDNumber' : 'PassportNumber'" [(ngModel)]="formData.idNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label [for]="idType === 'SA' ? 'IDNumber' : 'passport'" class="block text-gray-800 text-sm font-medium mb-1">{{ idType === 'SA' ? 'ID Number' : 'Passport Number' }}</label>
+            <input [type]="idType === 'SA' ? 'text' : 'text'" [id]="idType === 'SA' ? 'IDNumber' : 'passport'" [name]="idType === 'SA' ? 'IDNumber' : 'passport'" [(ngModel)]="formData.idNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
         </div>
 
@@ -218,7 +218,7 @@
         <!-- PIN -->
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2">PIN</label>
-          <input [(ngModel)]="pin1" name="pin1" type="password" placeholder="Enter PIN" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <input [(ngModel)]="formData.pin" name="pin" type="password" placeholder="Enter PIN" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
 
         <!-- Confirm PIN -->
