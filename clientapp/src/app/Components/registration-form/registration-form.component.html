@@ -1,5 +1,71 @@
 <div class="flex justify-center bg-slate-600 h-screen p-2 overflow-auto">
-  <form #registrationForm="ngForm" (ngSubmit)="submitForm()" class="w-full md:w-1/2 m-1">
+  <div class="w-full md:w-1/3 bg-white rounded-lg shadow-lg p-6 m-2">
+    <!-- Left Box Content -->
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Bank name and logo</h2>
+  
+    <!-- Buttons for Login and Support -->
+    <div class="mb-6">
+      <a href="/" class="block w-full mb-3">
+        <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 w-full">
+          Back to Landing Page
+        </button>
+      </a>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 w-full mb-3">
+        Login
+      </button>
+      <button class="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-300 w-full">
+        Support
+      </button>
+    </div>
+    
+  
+    <!-- Additional Information or Links -->
+    <div class="text-sm text-gray-600 space-y-4">
+      <p class="mt-4">For support, contact us at <a href="tel:123456789" class="text-blue-500 hover:underline">123-456-789</a> or email <a href="mailto:support@example.com" class="text-blue-500 hover:underline">support@example.com</a>.</p>
+      
+      <!-- Bank Account Registration Info -->
+      <div class="border-t pt-4">
+        <h3 class="text-lg font-semibold mb-2 text-gray-800">Bank Account Registration</h3>
+        <p class="mb-2">To register a bank account, please provide:</p>
+        <ul class="list-disc pl-6">
+          <li class="mb-1">Proof of identity (ID or Passport)</li>
+          <li class="mb-1">Proof of residence</li>
+          <li class="mb-1">Bank account details</li>
+        </ul>
+      </div>
+  
+      <!-- Chat Dialogue for Robo Assistant -->
+      <div class="mt-6 border-t pt-4">
+        <h3 class="text-lg font-semibold mb-2 text-gray-800">ChatBot Assistant</h3>
+        <div class="bg-gray-100 rounded-lg p-4">
+          <!-- Chat messages -->
+          <div class="flex flex-col space-y-4">
+            <!-- Example of a chat message -->
+            <div class="flex items-start">
+              <div class="rounded-full bg-blue-500 text-white py-2 px-4 text-sm">Hello!</div>
+              <p class="ml-2 text-gray-800">Hi there! I need help with bank account registration.</p>
+            </div>
+            <!-- Example of a response -->
+            <div class="flex items-start">
+              <div class="rounded-full bg-gray-300 py-2 px-4 text-sm">Sure!</div>
+              <p class="ml-2 text-gray-800">Please provide your ID, proof of residence, and bank details.</p>
+            </div>
+          </div>
+  
+          <!-- Input field for chat -->
+          <div class="mt-4 flex">
+            <input type="text" placeholder="Type your message..." class="flex-1 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <button class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <form #registrationForm="ngForm" (ngSubmit)="submitForm()" class="w-full md:w-1/2 m-3">
     <div *ngIf="currentStep === 1" class="container mx-auto" style="max-height: auto; overflow-y: auto;">
       <div class="bg-white shadow-lg rounded-lg p-4 mb-1">
         <h2 class="text-lg font-bold mb-4 text-gray-800">Personal Information</h2>
