@@ -1,10 +1,30 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
+  animations: [
+    trigger('sectionAnimation', [
+      state('void', style({
+        height: '0px',
+        opacity: 0
+      })),
+      state('*', style({
+        height: '*',
+        opacity: 1
+      })),
+      transition('void <=> *', animate('300ms ease-in-out'))
+    ])
+  ]
 })
 export class NavigationComponent {
   constructor(private router: Router) {}
@@ -23,6 +43,7 @@ export class NavigationComponent {
   }
   openRegistrationForm() {
     this.router.navigate(['/registration']);
-    this.selectedSection = null;
+    //this.router.navigate(['/register']);
+    //this.selectedSection = null;
   }
 }

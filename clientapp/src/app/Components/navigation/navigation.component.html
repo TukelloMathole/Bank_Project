@@ -1,68 +1,111 @@
-<!-- app.component.html -->
-
 <nav class="bg-gray-800 p-4">
   <div class="container mx-auto flex justify-between items-center">
-    <div class="text-white text-xl font-bold">Your Website Name</div>
     <div class="flex items-center space-x-4">
-      <a
-
-        (click)="openSection('account')"
-        class="text-white hover:text-gray-300 transition duration-300"
-        >Accounts</a
-      >
-      <a
-
-        (click)="openSection('loan')"
-        class="text-white hover:text-gray-300 transition duration-300"
-        >Loans</a
-      >
-      <!-- Add other navigation links -->
-      <a
-        routerLink="/login"
-        (click)="openSection('login')"
-        class="bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-md transition duration-300"
-        >Log In</a
-      >
+      <a (click)="openSection('personal')" class="text-white hover:text-gray-300 transition duration-300">Personal</a>
+      <a (click)="openSection('private-wealth')" class="text-white hover:text-gray-300 transition duration-300">Private & Wealth</a>
+      <a (click)="openSection('business')" class="text-white hover:text-gray-300 transition duration-300">Business</a>
+      <a (click)="openSection('corporate')" class="text-white hover:text-gray-300 transition duration-300">Corporate</a>
+    </div>
+    <div class="flex items-center space-x-4">
+      <input type="text" placeholder="Search" class="px-4 py-2 rounded-md border border-gray-400">
+      <a routerLink="/login" (click)="openSection('login')" class="bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-md transition duration-300">Log In</a>
+    </div>
+  </div>
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <a (click)="openSection('account')" class="text-white hover:text-gray-300 transition duration-300">Accounts</a>
+      <a (click)="openSection('creditcards')" class="text-white hover:text-gray-300 transition duration-300">Credit cards</a>
+      <a (click)="openSection('loan')" class="text-white hover:text-gray-300 transition duration-300">Loans</a>
+      <a (click)="openSection('investment')" class="text-white hover:text-gray-300 transition duration-300">Invest</a>
+      <a (click)="openSection('insurance')" class="text-white hover:text-gray-300 transition duration-300">Insurance</a>
+      <a (click)="openSection('Rewards')" class="text-white hover:text-gray-300 transition duration-300">Rewards</a>
     </div>
   </div>
 </nav>
 
-<div *ngIf="selectedSection" class="absolute left-0 w-full h-full bg-gray-900 bg-opacity-50">
-    <div class="relative bg-white p-8 rounded-md w-full h-80">
-      <ng-container *ngIf="selectedSection === 'account'">
-        <!-- Content for Section1 -->
-        <!-- this section is for types of accounts and should redirect to specific pages for information -->
-        <div class="grid grid-cols-4 gap-4">
-            <div *ngFor="let accountType of accountTypes" class="bg-blue-500 p-4 text-black">
-              <p>{{ accountType }}</p>
-            </div>
-          </div>
-
-      </ng-container>
-
-      <ng-container *ngIf="selectedSection === 'loan'">
-        <!-- this section must include other relavant informatoin about the bant etc -->
-        <div class="bg-blue-500 flex flex-col text-black">
-          <p>This is the content for Section 2.</p>
+<div *ngIf="selectedSection" [@sectionAnimation] class="absolute left-0 w-full bg-gray-900 bg-opacity-50">
+  <div class="relative bg-white p-4 rounded-md w-full h-auto">
+    <ng-container *ngIf="selectedSection === 'account'">
+      <div class="grid grid-cols-3 gap-3">
+        <div>
+          <h1 class="text-lg font-bold">Everyday banking</h1>
+          <p class="hover:text-blue-500">Premium Banking</p>
+          <p class="hover:text-blue-500">Gold Account</p>
+          <p class="hover:text-blue-500">Flexi Account</p>
+          <a href="#" class="hover:text-blue-500">See All</a>
         </div>
-      </ng-container>
+        <div>
+          <h1 class="text-lg font-bold">Youth, Student & Graduates</h1>
+          <p class="hover:text-blue-500">Mega Account</p>
+          <p class="hover:text-blue-500">Student Account</p>
+          <a href="#" class="hover:text-blue-500">See All</a>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold">International Banking</h1>
+          <p class="hover:text-blue-500">International Payments</p>
+          <p class="hover:text-blue-500">Currency Investment Accounts</p>
+          <p class="hover:text-blue-500">Travel</p>
+          <a href="#" class="hover:text-blue-500">See All</a>
+        </div>
+      </div>
+    </ng-container>
+    
+    
 
+    <ng-container *ngIf="selectedSection === 'creditcards'">
+      <div class="grid grid-cols-3 gap-3">
+        <div>
+          <h1 class="text-lg font-bold">Banking Credit Cards</h1>
+          <p class="hover:text-blue-500">Premium Banking Credit Card</p>
+          <p class="hover:text-blue-500">Gold Credit Card</p>
+          <p class="hover:text-blue-500">Flexi Core Credit Card</p>
+          <a href="#" class="hover:text-blue-500">See All</a>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold">Credit limit increase</h1>
+          <p class="hover:text-blue-500">Apply for your limit increase</p>
+          <a href="#" class="hover:text-blue-500">See All</a>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="selectedSection === 'loan'">
+      <div class="grid grid-cols-4 gap-4">
+        <div class="bg-blue-500 p-4 text-black">
+          <p>This is the loan section</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="selectedSection === 'investment'">
+      <div class="bg-blue-500 flex flex-col text-black">
+        <p>This is the content for the investment section.</p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="selectedSection === 'insurance'">
+      <div class="grid grid-cols-4 gap-4">
+        <div class="bg-blue-500 p-4 text-black">
+          <p>This is the content for the insurance section.</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="selectedSection === 'Rewards'">
+      <div class="bg-blue-500 flex flex-col text-black">
+        <p>This is the content for the Rewards section.</p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="selectedSection === 'login'">
       <form (submit)="login()" class="flex flex-col items-center">
-        <!-- Add your login form fields here -->
-        <!-- in the log in include how the customer want to log on the system like personal, business, investment or shares -->
         <input type="text" placeholder="Username" class="mb-2 p-2 rounded-md border">
         <input type="password" placeholder="Password" class="mb-2 p-2 rounded-md border">
         <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Login</button>
         <div class="mt-2">
           <label class="text-blue-500">Forgot Password?</label>
         </div>
-        <!-- Link to open the Open Bank Account section -->
-        <label class="text-blue-500" (click)="openRegistrationForm()">Open Bank Account</label>
+        <label class="text-blue-500 cursor-pointer" (click)="openRegistrationForm()">Open Bank Account</label>
       </form>
-      <button (click)="closeSection()" class="absolute top-4 right-4 text-blue-500 hover:underline">
-        Close
-      </button>
-    </div>
+    </ng-container>
+    <button (click)="closeSection()" class="absolute top-4 right-4 text-blue-500 hover:underline">Close</button>
   </div>
-
-
+</div>

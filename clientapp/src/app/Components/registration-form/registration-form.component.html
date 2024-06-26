@@ -1,48 +1,48 @@
-<div class="flex justify-center bg-slate-600 h-screen p-5">
+<div class="flex justify-center bg-slate-600 h-screen p-2 overflow-auto">
   <form #registrationForm="ngForm" (ngSubmit)="submitForm()" class="w-full md:w-1/2 m-1">
     <div *ngIf="currentStep === 1" class="container mx-auto" style="max-height: auto; overflow-y: auto;">
       <div class="bg-white shadow-lg rounded-lg p-4 mb-1">
-        <h2 class="text-2xl font-bold mb-4 text-gray-800">Personal Information</h2>
-
+        <h2 class="text-lg font-bold mb-4 text-gray-800">Personal Information</h2>
+    
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
           <div>
-            <label for="FirstName" class="block text-gray-800 text-sm font-medium mb-1">First Name</label>
-            <input type="text" id="FirstName" name="FirstName" required [(ngModel)]="formData.firstName" placeholder="First Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label for="FirstName" class="block text-gray-800 text-xs font-medium mb-1">First Name</label>
+            <input type="text" id="FirstName" name="FirstName" required [(ngModel)]="formData.firstName" placeholder="First Name" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
           <div>
-            <label for="MiddleName" class="block text-gray-800 text-sm font-medium mb-1">Middle Name</label>
-            <input type="text" id="MiddleName" name="MiddleName" [(ngModel)]="formData.middleName" placeholder="Middle Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label for="MiddleName" class="block text-gray-800 text-xs font-medium mb-1">Middle Name</label>
+            <input type="text" id="MiddleName" name="MiddleName" [(ngModel)]="formData.middleName" placeholder="Middle Name" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
           <div>
-            <label for="LastName" class="block text-gray-800 text-sm font-medium mb-1">Last Name</label>
-            <input type="text" id="LastName" name="LastName" required [(ngModel)]="formData.lastName" placeholder="Last Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label for="LastName" class="block text-gray-800 text-xs font-medium mb-1">Last Name</label>
+            <input type="text" id="LastName" name="LastName" required [(ngModel)]="formData.lastName" placeholder="Last Name" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
         </div>
-
+    
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
           <div class="mb-2">
-            <label for="DateOfBirth" class="block text-gray-800 text-sm font-medium mb-1">Date of Birth</label>
-            <input type="date" id="DateOfBirth" name="DateOfBirth" [(ngModel)]="formData.dob" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label for="DateOfBirth" class="block text-gray-800 text-xs font-medium mb-1">Date of Birth</label>
+            <input type="date" id="DateOfBirth" name="DateOfBirth" [(ngModel)]="formData.dob" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-
+    
           <div class="mb-2">
-            <label for="gender" class="block text-gray-800 text-sm font-medium mb-1">Gender</label>
-            <select id="gender" name="gender" [(ngModel)]="formData.gender" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <label for="gender" class="block text-gray-800 text-xs font-medium mb-1">Gender</label>
+            <select id="gender" name="gender" [(ngModel)]="formData.gender" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
           </div>
-
+    
           <div class="mb-2">
-            <label for="nationality" class="block text-gray-800 text-sm font-medium mb-1">Nationality</label>
-            <input type="text" id="nationality" name="nationality" [(ngModel)]="formData.nationality" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label for="nationality" class="block text-gray-800 text-xs font-medium mb-1">Nationality</label>
+            <input type="text" id="nationality" name="nationality" [(ngModel)]="formData.nationality" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
         </div>
-
+    
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
           <div>
-            <label class="block text-gray-800 text-sm font-medium mb-1">Select Identification Type</label>
+            <label class="block text-gray-800 text-xs font-medium mb-1">Select Identification Type</label>
             <div class="mb-2 flex items-center">
               <label for="idTypeSA" class="mr-4 text-gray-800">
                 <input type="radio" id="idTypeSA" name="idType" value="SA" [(ngModel)]="idType" (change)="toggleIDType()" class="form-radio" /> South African ID Number
@@ -53,19 +53,19 @@
             </div>
           </div>
           <div class="mb-2">
-            <label [for]="idType === 'SA' ? 'IDNumber' : 'passport'" class="block text-gray-800 text-sm font-medium mb-1">{{ idType === 'SA' ? 'ID Number' : 'Passport Number' }}</label>
-            <input [type]="idType === 'SA' ? 'text' : 'text'" [id]="idType === 'SA' ? 'IDNumber' : 'passport'" [name]="idType === 'SA' ? 'IDNumber' : 'passport'" [(ngModel)]="formData.idNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <label [for]="idType === 'SA' ? 'IDNumber' : 'passport'" class="block text-gray-800 text-xs font-medium mb-1">{{ idType === 'SA' ? 'ID Number' : 'Passport Number' }}</label>
+            <input [type]="idType === 'SA' ? 'text' : 'text'" [id]="idType === 'SA' ? 'IDNumber' : 'passport'" [name]="idType === 'SA' ? 'IDNumber' : 'passport'" [(ngModel)]="formData.idNumber" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
         </div>
-
+    
         <div class="mb-2">
-          <label for="idImage" class="block text-gray-800 text-sm font-medium mb-1">Upload Scanned ID Image</label>
-          <input type="file" id="idImage" name="idImage" (change)="onFileSelected($event)" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          <label for="idImage" class="block text-gray-800 text-xs font-medium mb-1">Upload Scanned ID Image</label>
+          <input type="file" id="idImage" name="idImage" (change)="onFileSelected($event)" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
         </div>
-
+    
         <!-- Webcam section -->
         <div class="flex justify-center">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 p-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-1 p-2">
             <div class="rounded-lg overflow-hidden shadow-md w-full md:w-auto">
               <webcam [trigger]="triggerObservable" (imageCapture)="handleImageCapture($event)"></webcam>
               <button class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded shadow-md focus:outline-none focus:ring focus:ring-blue-200" (click)="captureImage()">Capture Image</button>
@@ -73,13 +73,13 @@
             <div class="flex flex-col justify-center items-center w-full md:w-auto bg-gray-200 rounded-lg">
               <div class="mb-4">
                 <div *ngIf="capturedImage">
-                  <label class="block text-gray-800 text-sm font-bold mb-2">Captured Image:</label>
+                  <label class="block text-gray-800 text-xs font-bold mb-2">Captured Image:</label>
                   <img [src]="capturedImage" alt="Captured Image" class="w-48 h-auto rounded-lg">
                 </div>
               </div>
               <div class="mb-4">
                 <div *ngIf="formData.idImage">
-                  <label class="block text-gray-800 text-sm font-bold mb-2">ID Image:</label>
+                  <label class="block text-gray-800 text-xs font-bold mb-2">ID Image:</label>
                   <img [src]="formData.idImage" alt="ID Image" class="w-48 h-auto rounded-lg">
                 </div>
               </div>
@@ -89,227 +89,231 @@
             </div>
           </div>
         </div>
-
+    
         <button type="button" (click)="nextStep()" class="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded-md mt-4 focus:outline-none focus:ring focus:ring-blue-200 transition duration-300 ease-in-out">Next</button>
       </div>
     </div>
+    
       <!-- this is the contact section -->
-    <div *ngIf="currentStep === 2" class="mb-8">
-      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 class="text-xl font-bold mb-4">Contact Information</h2>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="mb-4">
-            <label for="country" class="block text-gray-700 text-sm font-bold mb-2">Country:</label>
-            <input type="text" id="country" name="country" [(ngModel)]="formData.country" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+      <div *ngIf="currentStep === 2" class="mb-8">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <h2 class="text-xl font-bold mb-4">Contact Information</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="mb-2">
+              <label for="country" class="block text-gray-700 text-xs font-bold mb-1">Country:</label>
+              <input type="text" id="country" name="country" [(ngModel)]="formData.country" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            <div class="mb-2">
+              <label for="Province" class="block text-gray-700 text-xs font-bold mb-1">Province:</label>
+              <input type="text" id="Province" name="Province" [(ngModel)]="formData.province" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
           </div>
-          <div class="mb-4">
-            <label for="Province" class="block text-gray-700 text-sm font-bold mb-2">Province:</label>
-            <input type="text" id="Province" name="Province" [(ngModel)]="formData.province" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+      
+          <div class="mb-2">
+            <label for="City" class="block text-xs font-medium text-gray-700">City:</label>
+            <input type="text" id="City" name="City" [(ngModel)]="formData.city" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-        </div>
-
-        <div class="mb-4">
-          <label for="City" class="block text-sm font-medium text-gray-700">City:</label>
-          <input type="text" id="City" name="City" [(ngModel)]="formData.city" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div class="mb-4">
-            <label for="Suburb" class="block text-sm font-medium text-gray-700">Suburb:</label>
-            <input type="text" id="Suburb" name="Suburb" [(ngModel)]="formData.suburb" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+      
+          <div class="grid grid-cols-2 gap-4">
+            <div class="mb-2">
+              <label for="Suburb" class="block text-xs font-medium text-gray-700">Suburb:</label>
+              <input type="text" id="Suburb" name="Suburb" [(ngModel)]="formData.suburb" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            <div class="mb-2">
+              <label for="Street" class="block text-xs font-medium text-gray-700">Street:</label>
+              <input type="text" id="Street" name="Street" [(ngModel)]="formData.street" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
           </div>
-          <div class="mb-4">
-            <label for="Street" class="block text-sm font-medium text-gray-700">Street:</label>
-            <input type="text" id="Street" name="Street" [(ngModel)]="formData.street" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+      
+          <div class="grid grid-cols-2 gap-4">
+            <div class="mb-2">
+              <label for="PostalCode" class="block text-xs font-medium text-gray-700">Postal Code:</label>
+              <input type="text" id="PostalCode" name="PostalCode" [(ngModel)]="formData.postalCode" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            <div class="mb-2">
+              <label for="HouseNumber" class="block text-xs font-medium text-gray-700">House Number:</label>
+              <input type="text" id="HouseNumber" name="HouseNumber" [(ngModel)]="formData.houseNumber" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
           </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div class="mb-4">
-            <label for="PostalCode" class="block text-sm font-medium text-gray-700">Postal Code:</label>
-            <input type="text" id="PostalCode" name="PostalCode" [(ngModel)]="formData.postalCode" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          <div class="mb-2">
+            <label for="proofOfResidence" class="block text-gray-700 text-xs font-bold mb-1">Upload and Preview Proof of Residence:</label>
+            <input type="file" id="proofOfResidence" name="proofOfResidence" (change)="onFileSelected($event)" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-          <div class="mb-4">
-            <label for="HouseNumber" class="block text-sm font-medium text-gray-700">House Number:</label>
-            <input type="text" id="HouseNumber" name="HouseNumber" [(ngModel)]="formData.houseNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+      
+          <div class="mb-2">
+            <label for="email" class="block text-xs font-medium text-gray-700">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="formData.email" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-        </div>
-        <div class="mb-4">
-          <label for="proofOfResidence" class="block text-gray-700 text-sm font-bold mb-2">Upload and Preview Proof of Residence:</label>
-          <input type="file" id="proofOfResidence" name="proofOfResidence" (change)="onFileSelected($event)" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
-          <input type="email" id="email" name="email" [(ngModel)]="formData.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <div class="mb-4">
-          <label for="PhoneNumber" class="block text-sm font-medium text-gray-700">Phone Number:</label>
-          <input type="text" id="PhoneNumber" name="PhoneNumber" [(ngModel)]="formData.phoneNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <div class="flex justify-between">
-          <button
-            type="button"
-            (click)="previousStep()"
-            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            (click)="nextStep()"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Next
-          </button>
+      
+          <div class="mb-2">
+            <label for="PhoneNumber" class="block text-xs font-medium text-gray-700">Phone Number:</label>
+            <input type="text" id="PhoneNumber" name="PhoneNumber" [(ngModel)]="formData.phoneNumber" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+      
+          <div class="flex justify-between">
+            <button
+              type="button"
+              (click)="previousStep()"
+              class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              (click)="nextStep()"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      
 
 
 
-    <div *ngIf="currentStep === 3" class="mb-8">
-      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 class="text-xl font-bold mb-4">Financial Information</h2>
-
-        <!-- Employment Status -->
-        <div class="mb-4">
-          <label for="employmentStatus" class="block text-gray-700 text-sm font-bold mb-2">Employment Status:</label>
-          <select id="employmentStatus" name="employmentStatus" [(ngModel)]="formData.employmentStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <option value="" disabled selected>Select Employment Status</option>
-            <option value="Employed">Employed</option>
-            <option value="Unemployed">Unemployed</option>
-            <option value="SelfEmployed">Self-Employed</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-
-        <div class="mb-4">
-          <label for="accountType" class="block text-gray-700 text-sm font-bold mb-2">Account Type:</label>
-          <select id="accountType" name="accountType" [(ngModel)]="formData.accountType" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <option value="" disabled selected>Select Account Type</option>
-            <option value="Checking">Checking</option>
-            <option value="Savings">Savings</option>
-            <option value="Investment">Investment</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-
-        <!-- Income Details -->
-        <div class="mb-4">
-          <label for="incomeDetails" class="block text-gray-700 text-sm font-bold mb-2">Income Details:</label>
-          <input type="text" id="incomeDetails" name="incomeDetails" [(ngModel)]="formData.incomeDetails" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <!-- Tax Identification Number -->
-        <div class="mb-4">
-          <label for="taxIdNumber" class="block text-gray-700 text-sm font-bold mb-2">Tax Identification Number (if applicable):</label>
-          <input type="text" id="taxIdNumber" name="taxIdNumber" [(ngModel)]="formData.taxIdNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <!-- Financial Institution Details -->
-        <div class="mb-4">
-          <label for="financialInstitutionDetails" class="block text-gray-700 text-sm font-bold mb-2">Banking or Financial Institution Details:</label>
-          <input type="text" id="financialInstitutionDetails" name="financialInstitutionDetails" [(ngModel)]="formData.financialInstitutionDetails" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-
-        <!-- PIN -->
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">PIN</label>
-          <input [(ngModel)]="formData.pin" name="pin" type="password" placeholder="Enter PIN" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-        </div>
-
-        <!-- Confirm PIN -->
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Confirm PIN</label>
-          <input [(ngModel)]="pin2" name="pin2" type="password" placeholder="Confirm PIN" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-        </div>
-
-        <!-- Buttons -->
-        <div class="flex justify-between">
-          <button
-            type="button"
-            (click)="previousStep()"
-            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            (click)="nextStep()"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div *ngIf="currentStep === 4" class="mb-8">
-      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Email (Username)</label>
-          <p class="text-gray-700">{{ formData.email }}</p>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-          <input
-            type="password"
-            [(ngModel)]="formData.password"
-            name="password"
-            required
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter your password"
-          >
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
-          <input
-            type="password"
-            [(ngModel)]="formData.confirmPassword"
-            name="confirmPassword"
-            required
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Confirm your password"
-          >
-        </div>
-
-        <!-- Additional Information -->
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Additional Information</label>
-          <!-- Add fields for additional information as needed -->
-        </div>
-
-        <!-- Terms and Conditions -->
-        <div class="mb-4">
-          <input type="checkbox" id="termsAndConditions" name="termsAndConditions" [(ngModel)]="formData.termsAndConditions" class="mr-2 leading-tight">
-          <label for="termsAndConditions" class="text-gray-700 text-sm">I agree to the <a href="#" class="text-blue-500 hover:underline">Terms and Conditions</a></label>
-        </div>
-
-        <!-- Buttons -->
-        <div class="flex justify-between">
-          <button
-            type="button"
-            (click)="previousStep()"
-            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Previous
-          </button>
-          <button
-            type="submit"
-            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Register
-          </button>
+      <div *ngIf="currentStep === 3" class="mb-8">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <h2 class="text-xl font-bold mb-4">Financial Information</h2>
+      
+          <!-- Employment Status -->
+          <div class="mb-2">
+            <label for="employmentStatus" class="block text-gray-700 text-xs font-bold mb-1">Employment Status:</label>
+            <select id="employmentStatus" name="employmentStatus" [(ngModel)]="formData.employmentStatus" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <option value="" disabled selected>Select Employment Status</option>
+              <option value="Employed">Employed</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="SelfEmployed">Self-Employed</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+      
+          <div class="mb-2">
+            <label for="accountType" class="block text-gray-700 text-xs font-bold mb-1">Account Type:</label>
+            <select id="accountType" name="accountType" [(ngModel)]="formData.accountType" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <option value="" disabled selected>Select Account Type</option>
+              <option value="Checking">Checking</option>
+              <option value="Savings">Savings</option>
+              <option value="Investment">Investment</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+      
+          <!-- Income Details -->
+          <div class="mb-2">
+            <label for="incomeDetails" class="block text-gray-700 text-xs font-bold mb-1">Income Details:</label>
+            <input type="text" id="incomeDetails" name="incomeDetails" [(ngModel)]="formData.incomeDetails" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+      
+          <!-- Tax Identification Number -->
+          <div class="mb-2">
+            <label for="taxIdNumber" class="block text-gray-700 text-xs font-bold mb-1">Tax Identification Number (if applicable):</label>
+            <input type="text" id="taxIdNumber" name="taxIdNumber" [(ngModel)]="formData.taxIdNumber" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+      
+          <!-- Financial Institution Details -->
+          <div class="mb-2">
+            <label for="financialInstitutionDetails" class="block text-gray-700 text-xs font-bold mb-1">Banking or Financial Institution Details:</label>
+            <input type="text" id="financialInstitutionDetails" name="financialInstitutionDetails" [(ngModel)]="formData.financialInstitutionDetails" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+      
+          <!-- PIN -->
+          <div class="mb-2">
+            <label class="block text-gray-700 text-xs font-bold mb-1">PIN</label>
+            <input [(ngModel)]="formData.pin" name="pin" type="password" placeholder="Enter PIN" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+      
+          <!-- Confirm PIN -->
+          <div class="mb-2">
+            <label class="block text-gray-700 text-xs font-bold mb-1">Confirm PIN</label>
+            <input [(ngModel)]="pin2" name="pin2" type="password" placeholder="Confirm PIN" class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+      
+          <!-- Buttons -->
+          <div class="flex justify-between">
+            <button
+              type="button"
+              (click)="previousStep()"
+              class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              (click)="nextStep()"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      
+
+
+
+      <div *ngIf="currentStep === 4" class="mb-8">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div class="mb-2">
+            <label class="block text-gray-700 text-xs font-bold mb-1">Email (Username)</label>
+            <p class="text-gray-700">{{ formData.email }}</p>
+          </div>
+      
+          <div class="mb-2">
+            <label class="block text-gray-700 text-xs font-bold mb-1">Password</label>
+            <input
+              type="password"
+              [(ngModel)]="formData.password"
+              name="password"
+              required
+              class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Enter your password"
+            >
+          </div>
+      
+          <div class="mb-2">
+            <label class="block text-gray-700 text-xs font-bold mb-1">Confirm Password</label>
+            <input
+              type="password"
+              [(ngModel)]="formData.confirmPassword"
+              name="confirmPassword"
+              required
+              class="shadow appearance-none border rounded w-full py-1 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Confirm your password"
+            >
+          </div>
+      
+          <!-- Additional Information -->
+          <div class="mb-2">
+            <label class="block text-gray-700 text-xs font-bold mb-1">Additional Information</label>
+            <!-- Add fields for additional information as needed -->
+          </div>
+      
+          <!-- Terms and Conditions -->
+          <div class="mb-2">
+            <input type="checkbox" id="termsAndConditions" name="termsAndConditions" [(ngModel)]="formData.termsAndConditions" class="mr-2 leading-tight">
+            <label for="termsAndConditions" class="text-gray-700 text-xs">I agree to the <a href="#" class="text-blue-500 hover:underline">Terms and Conditions</a></label>
+          </div>
+      
+          <!-- Buttons -->
+          <div class="flex justify-between">
+            <button
+              type="button"
+              (click)="previousStep()"
+              class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Previous
+            </button>
+            <button
+              type="submit"
+              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+      
 
 
   </form>
