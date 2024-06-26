@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { WebcamImage } from 'ngx-webcam';
 import { Subject } from 'rxjs';
 
+
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -23,7 +24,7 @@ export class RegistrationFormComponent implements AfterViewInit {
   triggerObservable = new Subject<void>();
   capturedImage: string | undefined;
   idType: string = 'SA'; // Default to South African ID Number
-
+  notificationMessage: string | null = null;
 
   
 
@@ -121,7 +122,7 @@ export class RegistrationFormComponent implements AfterViewInit {
           console.log('Response:', response);
           // Since the response is in text format, you can directly check the response text
           if (response && response.includes('User registration successful')) {
-            
+            this.notificationMessage = 'Registration successful';
             console.log('Registration successful');
             
           } else {

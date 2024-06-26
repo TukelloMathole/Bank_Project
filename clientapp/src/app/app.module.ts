@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './Components/landing/landing.component';
 import { NavigationComponent } from './Components/navigation/navigation.component';
 import { RegistrationFormComponent } from './Components/registration-form/registration-form.component';
+import { NotificationComponent } from './Components/notification/notification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     NavigationComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserAnimationsModule,
