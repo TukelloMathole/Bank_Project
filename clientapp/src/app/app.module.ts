@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WebcamModule } from 'ngx-webcam';
+import { AuthService } from './auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { LandingComponent } from './Components/landing/landing.component';
 import { NavigationComponent } from './Components/navigation/navigation.component';
 import { RegistrationFormComponent } from './Components/registration-form/registration-form.component';
 import { NotificationComponent } from './Components/notification/notification.component';
+import { UserComponent } from './Components/user/user.component';
+import { LoginComponent } from './Components/login/login.component';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { NotificationComponent } from './Components/notification/notification.co
     LandingComponent,
     NavigationComponent,
     RegistrationFormComponent,
-    NotificationComponent
+    NotificationComponent,
+    //UserComponent,
+    LoginComponent,
+    //UnauthorizedComponent,
+
   ],
   imports: [
     BrowserAnimationsModule,
@@ -28,7 +36,9 @@ import { NotificationComponent } from './Components/notification/notification.co
     HttpClientModule,
     WebcamModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

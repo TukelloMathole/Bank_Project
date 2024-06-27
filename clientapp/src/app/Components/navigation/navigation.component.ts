@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service'; 
 import {
   trigger,
   state,
@@ -27,8 +28,11 @@ import {
   ]
 })
 export class NavigationComponent {
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
+  
   selectedSection: string | null = null;
+  username: string = '';
+  password: string = '';
   accountTypes = ['Personal', 'Business', 'Youth', 'Seniors'];
   showOpenAccountSection: boolean = false;
   openSection(section: string): void {
@@ -39,7 +43,18 @@ export class NavigationComponent {
     this.selectedSection = null;
   }
   login(): void {
-    // Add your login functionality here
+    this.authService.login(this.username, this.password).subscribe(success => {
+      if (success) {
+        const role = this.authService.getUserRole();
+        if (role === 'admin') {
+          this.router.navigate(['/admin']);
+        } else if (role === 'user') {
+          this.router.navigate(['/user']);
+        }
+      } else {
+        alert('Invalid credentials');
+      }
+    });
   }
   openRegistrationForm() {
     this.router.navigate(['/registration']);
