@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WebcamModule } from 'ngx-webcam';
 import { AuthService } from './auth.service';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,10 @@ import { RegistrationFormComponent } from './Components/registration-form/regist
 import { NotificationComponent } from './Components/notification/notification.component';
 import { UserComponent } from './Components/user/user.component';
 import { LoginComponent } from './Components/login/login.component';
-import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';  // Uncomment this line
+// import { SettingsComponent } from './Components/user/Components/user-settings/user-settings.component';
+// import { AccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
+// import { TransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +27,9 @@ import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.co
     NavigationComponent,
     RegistrationFormComponent,
     NotificationComponent,
-    //UserComponent,
+    //UserComponent, // Uncomment this line if needed
     LoginComponent,
-    //UnauthorizedComponent,
-
+    //UnauthorizedComponent,  // Uncomment this line if needed
   ],
   imports: [
     BrowserAnimationsModule,
@@ -35,6 +38,14 @@ import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.co
     FormsModule,
     HttpClientModule,
     WebcamModule,
+    // CommonModule,
+    // RouterModule
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule
+  ],
+  exports: [
+   
   ],
   providers: [
     AuthService,

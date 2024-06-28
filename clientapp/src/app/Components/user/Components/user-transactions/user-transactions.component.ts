@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user-transactions',
+  standalone: true,
+  imports: [],
+  templateUrl: './user-transactions.component.html',
+  styleUrls: ['./user-transactions.component.css']
+})
+export class UserTransactionsComponent {
+
+}
