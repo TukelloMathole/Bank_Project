@@ -1,45 +1,67 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using bank_App.DTOs; // Include the namespace where LoginDto is defined
+using bank_App.Model;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace bank_App.Controllers
 {
     [ApiController]
     public class LogInController : ControllerBase
     {
-        // Dummy user data (replace with your actual data source)
-        private List<User> users = new List<User>
+        private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<LogInController> _logger;
+
+        public LogInController(AppDbContext context, IConfiguration configuration, ILogger<LogInController> logger)
         {
-            new User { Username = "admin", Password = "adminpassword", Role = "admin" },
-            new User { Username = "user", Password = "userpassword", Role = "user" }
-        };
+            _context = context;
+            _configuration = configuration;
+            _logger = logger;
+        }
 
         // POST: /api/login
         [HttpPost]
         [Route("api/login")]
         public IActionResult Login([FromBody] LoginDto loginDto)
         {
-            // Find user based on username and password
-            var user = users.SingleOrDefault(u => u.Username == loginDto.Username && u.Password == loginDto.Password);
+            var user = _context.SecurityAuthentication
+                .SingleOrDefault(u => u.Username == loginDto.Username && u.Password == loginDto.Password);
 
             if (user == null)
             {
+                _logger.LogWarning("Invalid login attempt for user: {Username}", loginDto.Username);
                 return BadRequest("Invalid username or password");
             }
 
-            // Simulate token generation (replace with actual token generation logic)
-            var token = "dummy_token";
+            var token = GenerateJwtToken(user);
 
-            // Return token and user role
             return Ok(new { Token = token, Role = user.Role });
         }
-    }
 
-    public class User
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        private string GenerateJwtToken(SecurityAuthentication user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim("Customer_ID", user.Customer_ID)
+                }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
     }
 }

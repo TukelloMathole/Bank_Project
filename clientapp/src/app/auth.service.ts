@@ -19,7 +19,6 @@ export class AuthService {
         map(response => {
           
           if (response && response.token && response.role) {
-            console.error('Login response:', response);
             localStorage.setItem(this.tokenKey, response.token);
             return true;
           }
@@ -42,6 +41,7 @@ export class AuthService {
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split('.')[1]));
+        console.log(payload)
         return { role: payload.role };
       } catch (error) {
         console.error('Token decoding error:', error);
