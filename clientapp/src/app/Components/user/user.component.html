@@ -3,10 +3,19 @@
   <!-- Left Navigation -->
   <div class="w-1/4 bg-gray-800 text-white">
     <ul class="py-4">
-      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700">Accounts</li>
-      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700">Transactions</li>
-      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700">Profile</li>
+      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700">
+        <a routerLink="/user/accounts" routerLinkActive="active">Accounts</a>
+      </li>
+      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700">
+        <a routerLink="/user/transactions" routerLinkActive="active">Transactions</a>
+      </li>
+      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700">
+        <a routerLink="/user/settings" routerLinkActive="active">Profile</a>
+      </li>
       <!-- Add more navigation items as needed -->
+      <li class="px-4 py-2 cursor-pointer hover:bg-gray-700" (click)="logout()">
+        Log Out
+      </li>
     </ul>
   </div>
 

@@ -36,13 +36,24 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  getCurrentUser() {
+  getCurrentUser(): { role: string, customerId: string } | null {
     const token = localStorage.getItem(this.tokenKey);
+
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split('.')[1]));
-        console.log(payload)
-        return { role: payload.role };
+        const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+        if (payload.exp && payload.exp > currentTime) {
+          // Token is valid
+          return {
+            role: payload.role,
+            customerId: payload.Customer_ID // Assuming Customer_ID is part of the token payload
+          };
+        } else {
+          console.log('Token has expired.');
+          // Handle token expiration or refresh here
+          return null;
+        }
       } catch (error) {
         console.error('Token decoding error:', error);
         return null;

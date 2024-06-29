@@ -7,24 +7,9 @@ import { LoginComponent } from './Components/login/login.component';
 import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 import { LandingComponent } from './Components/landing/landing.component';
 import { RegistrationFormComponent } from './Components/registration-form/registration-form.component';
-import { UserSettingsComponent } from './Components/user/Components/user-settings/user-settings.component';  // Adjusted import
-import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';  // Adjusted import
-import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';  // Adjusted import
-
-const userRoutes: Routes = [
-  {
-    path: 'user',
-    component: UserComponent,
-    canActivate: [AuthGuard],
-    data: { role: 'user' },
-    children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'settings', component: UserSettingsComponent },  // Adjusted component name
-      { path: 'accounts', component: UserAccountsComponent },  // Adjusted component name
-      { path: 'transactions', component: UserTransactionsComponent }  // Adjusted component name
-    ]
-  }
-];
+import { UserSettingsComponent } from './Components/user/Components/user-settings/user-settings.component';
+import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
+import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -34,7 +19,18 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'landing/:section', component: LandingComponent },
   { path: 'registration', component: RegistrationFormComponent },
-  ...userRoutes  // Include child routes for 'user' under the root routes
+  {
+    path: 'user',
+    component: UserComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'user' },
+    children: [
+      { path: '', redirectTo: 'accounts', pathMatch: 'full' },
+      { path: 'settings', component: UserSettingsComponent },
+      { path: 'accounts', component: UserAccountsComponent },
+      { path: 'transactions', component: UserTransactionsComponent }
+    ]
+  }
 ];
 
 @NgModule({

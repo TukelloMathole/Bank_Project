@@ -1,1 +1,88 @@
-<p>user-accounts works!</p>
+<div class="py-6 px-4">
+    <!-- First Row: Account Summary, Account Settings, Alerts and Notifications -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <!-- Account Summary -->
+        
+        <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden text-white cursor-pointer" (click)="openPopup(account)">
+            <div class="p-6">
+              <h2 class="text-2xl font-bold mb-4">Account Summary</h2>
+              <p class="text-lg">Account Type: {{ account.type }}</p>
+              <p class="text-lg">Balance: ${{ account.balance }}</p>
+              <p class="text-lg">Status: {{ account.status }}</p>
+            </div>
+          </div>
+          
+          <app-popup *ngIf="isPopupOpen" [account]="selectedAccount" (close)="closePopup()"></app-popup>
+          
+
+        <!-- Account Settings -->
+        <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden text-white">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold mb-4">Account Settings</h2>
+                <form (submit)="saveSettings()">
+                    <label class="flex items-center text-gray-400">
+                        <!-- <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500" [(ngModel)]="settings.notificationsEnabled"> -->
+                        <span class="ml-2">Enable Notifications</span>
+                    </label>
+                    <!-- Add more settings as needed -->
+                    <button type="submit"
+                        class="mt-4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md">Save
+                        Settings</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Alerts and Notifications -->
+        <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden text-white">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold mb-4">Alerts and Notifications</h2>
+                <div *ngFor="let alert of alerts" class="bg-yellow-200 p-3 rounded mb-4">
+                    <p class="font-bold text-yellow-800">Alert: {{ alert.message }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row: Debit Orders and Loans -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <!-- Debit Orders -->
+        <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden text-white">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold mb-4">Debit Orders</h2>
+                <!-- Implement logic to display/manage debit orders -->
+                <p>Here you can manage your debit orders.</p>
+            </div>
+        </div>
+
+        <!-- Loans -->
+        <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden text-white">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold mb-4">Loans</h2>
+                <!-- Implement logic to display/view loans -->
+                <p>View information about your loans here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Row: Analytics - Spending and Savings -->
+    <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden text-white">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-4">Analytics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Spending Analytics -->
+                <div class="bg-gray-800 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">Spending Analysis</h3>
+                    <!-- Placeholder for spending analysis chart -->
+                    <p>Implement a chart or data visualization for spending analysis here.</p>
+                </div>
+
+                <!-- Savings Analytics -->
+                <div class="bg-gray-800 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">Savings Overview</h3>
+                    <!-- Placeholder for savings overview chart -->
+                    <p>Display a chart or summary of savings and investment performance here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

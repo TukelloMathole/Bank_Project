@@ -15,10 +15,12 @@ import { RegistrationFormComponent } from './Components/registration-form/regist
 import { NotificationComponent } from './Components/notification/notification.component';
 import { UserComponent } from './Components/user/user.component';
 import { LoginComponent } from './Components/login/login.component';
-import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';  // Uncomment this line
-// import { SettingsComponent } from './Components/user/Components/user-settings/user-settings.component';
-// import { AccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
-// import { TransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
+import { UserSettingsComponent } from './Components/user/Components/user-settings/user-settings.component';
+import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
+import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
+import { AccountService } from './Services/account.service';
+import { PopupComponent } from './Components/user/Components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,9 @@ import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.co
     NavigationComponent,
     RegistrationFormComponent,
     NotificationComponent,
-    //UserComponent, // Uncomment this line if needed
+    UserComponent,
     LoginComponent,
-    //UnauthorizedComponent,  // Uncomment this line if needed
+    
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,17 +40,16 @@ import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.co
     FormsModule,
     HttpClientModule,
     WebcamModule,
-    // CommonModule,
-    // RouterModule
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule
-  ],
-  exports: [
-   
+    RouterModule,
+    UnauthorizedComponent,
+    UserSettingsComponent,
+    //UserAccountsComponent,
+    UserTransactionsComponent,
+    PopupComponent
   ],
   providers: [
     AuthService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })
