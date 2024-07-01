@@ -33,6 +33,7 @@ public class AccountController : ControllerBase
         {
             AccountNumber = account.Account_Number,
             AccountType = account.Card_Type,
+
             Balance = account.Balance
             // Add other properties as needed
         };

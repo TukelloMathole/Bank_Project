@@ -20,7 +20,6 @@ import { UserSettingsComponent } from './Components/user/Components/user-setting
 import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
 import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
 import { AccountService } from './Services/account.service';
-import { PopupComponent } from './Components/user/Components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { PopupComponent } from './Components/user/Components/popup/popup.compone
     NotificationComponent,
     UserComponent,
     LoginComponent,
-    
   ],
   imports: [
     BrowserAnimationsModule,
@@ -45,7 +43,7 @@ import { PopupComponent } from './Components/user/Components/popup/popup.compone
     UserSettingsComponent,
     //UserAccountsComponent,
     UserTransactionsComponent,
-    PopupComponent
+    
   ],
   providers: [
     AuthService,
