@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
+using bank_App.Model;
+using System;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+ // Requires authentication for all actions in this controller
 public class AccountController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -15,29 +14,30 @@ public class AccountController : ControllerBase
     {
         _context = context;
     }
-
-    // GET: api/account/details/{customerId}
-    [HttpGet("details/{customerId}")]
-    public async Task<ActionResult<AccountDetailsDto>> GetAccountDetails(string customerId)
+    [Authorize]
+    // POST: api/account/details
+    [HttpPost("details")]
+    public async Task<ActionResult<string>> GetAccountDetails([FromBody] TokenRequestDto dto)
     {
-        var account = await _context.Account_Table
-            .FirstOrDefaultAsync(a => a.Customer_ID == customerId);
-
-        if (account == null)
+        if (!Request.Headers.ContainsKey("authorization"))return Unauthorized();
+        try
         {
-            return NotFound(); // Return 404 if user's account is not found
+            if (string.IsNullOrWhiteSpace(dto.token))
+            {
+                return BadRequest("Token is required."); // Return 400 Bad Request if token is missing
+            }
+
+            // Log the token received from the request body
+            Console.WriteLine($"Token received: {dto.token}");
+
+            // Return a "Hello back" message
+            return Ok("Hello back");
         }
-
-        // Map the account entity to a DTO (Data Transfer Object) to serve specific details
-        var accountDetails = new AccountDetailsDto
+        catch (Exception ex)
         {
-            AccountNumber = account.Account_Number,
-            AccountType = account.Card_Type,
-
-            Balance = account.Balance
-            // Add other properties as needed
-        };
-
-        return Ok(accountDetails);
+            // Log the exception
+            Console.WriteLine($"An error occurred while processing the request: {ex.Message}");
+            return StatusCode(500, "An error occurred while processing the request.");
+        }
     }
 }

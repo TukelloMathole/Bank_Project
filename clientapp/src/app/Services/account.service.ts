@@ -8,21 +8,26 @@ import { AuthService } from '../auth.service';
   providedIn: 'root' // Specifies that the service should be provided at the root level
 })
 export class AccountService {
-  private baseUrl = 'http://your-api-base-url/api/accounts'; // Adjust with your actual API base URL
+  private baseUrl = 'https://localhost:7066/api/account'; // Adjust with your actual API base URL
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getAccountDetails(): Observable<any> {
     const currentUser = this.authService.getCurrentUser();
+
     if (currentUser && currentUser.customerId) {
-      return this.http.get(`${this.baseUrl}/details/${currentUser.customerId}`);
+      const userDetails = {
+        Customer_ID: currentUser.customerId
+      };
+      console.log(userDetails)
+      return this.http.post(`${this.baseUrl}/details`, userDetails);
     } else {
       throw new Error('User not authenticated or customerId not available.');
     }
   }
-//   getAccountDetails(customerId: string): Observable<any> {
-//     return this.http.get(`${this.baseUrl}/details/${customerId}`);
-//   }
+  // getAccountDetails(customerId: string): Observable<any> {
+  //   return this.http.get(`${this.baseUrl}/details/${customerId}`);
+  // }
   getAccountSettings(): Observable<any> {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.customerId) {

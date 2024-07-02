@@ -74,6 +74,8 @@ export class UserAccountsComponent implements OnInit {
   ];
   constructor(private accountService: AccountService) { }
 
+
+  
   ngOnInit(): void {
     this.fetchAccountDetails();
     this.fetchSettings();
@@ -83,7 +85,7 @@ export class UserAccountsComponent implements OnInit {
   fetchAccountDetails(): void {
     this.accountService.getAccountDetails().subscribe((data) => {
       this.account = data;
-      console.log(this.account)
+      console.log("this account details",this.account)
     });
   }
 
