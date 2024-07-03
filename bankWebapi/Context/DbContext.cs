@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
     public DbSet<SecurityAuthentication> SecurityAuthentication { get; set; }
     public DbSet<Account_Table> Account_Table { get; set; }
     public DbSet<FinancialInformation> FinancialInformation { get; set; }
+    public DbSet<TransactionTable> TransactionTable { get; set; }
 
     public static readonly ILoggerFactory MyLoggerFactory
             = LoggerFactory.Create(builder => { builder.AddConsole(); });
@@ -42,5 +43,7 @@ public class AppDbContext : DbContext
            .HasKey(u => u.User_ID);
         modelBuilder.Entity<FinancialInformation>()
             .HasKey(u => u.ID);
+        modelBuilder.Entity<TransactionTable>()
+            .HasKey(u => u.Transaction_ID);
     }
 }

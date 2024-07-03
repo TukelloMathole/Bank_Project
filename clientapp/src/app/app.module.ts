@@ -20,6 +20,7 @@ import { UserSettingsComponent } from './Components/user/Components/user-setting
 import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
 import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
 import { AccountService } from './Services/account.service';
+import { TransactionService } from './Services/transaction.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AccountService } from './Services/account.service';
     NotificationComponent,
     UserComponent,
     LoginComponent,
+    UserTransactionsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -39,15 +41,16 @@ import { AccountService } from './Services/account.service';
     HttpClientModule,
     WebcamModule,
     RouterModule,
-    UnauthorizedComponent,
-    UserSettingsComponent,
-    //UserAccountsComponent,
-    UserTransactionsComponent,
+    UnauthorizedComponent,  // Moved here
+    UserSettingsComponent,  // Moved here
+    UserAccountsComponent,  // Uncommented
     
+    FormsModule,
   ],
   providers: [
     AuthService,
-    AccountService
+    AccountService,
+    TransactionService
   ],
   bootstrap: [AppComponent]
 })

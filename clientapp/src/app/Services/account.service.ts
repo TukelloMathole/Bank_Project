@@ -1,6 +1,7 @@
 // account.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; // Import HttpClient for HTTP requests
+import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs'; // Import Observable for handling asynchronous operations
 import { AuthService } from '../auth.service';
 
@@ -14,13 +15,21 @@ export class AccountService {
 
   getAccountDetails(): Observable<any> {
     const currentUser = this.authService.getCurrentUser();
-
+  
     if (currentUser && currentUser.customerId) {
       const userDetails = {
         Customer_ID: currentUser.customerId
       };
-      console.log(userDetails)
-      return this.http.post(`${this.baseUrl}/details`, userDetails);
+      console.log(userDetails);
+  
+      const token = currentUser.token;
+      if (!token) {
+        throw new Error('Token not found.');
+      }
+  
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+      return this.http.post(`${this.baseUrl}/details`, userDetails, { headers });
     } else {
       throw new Error('User not authenticated or customerId not available.');
     }

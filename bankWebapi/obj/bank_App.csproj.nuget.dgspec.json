@@ -73,6 +73,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.6.2, )"
+            },
+            "WebSocketManager": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [

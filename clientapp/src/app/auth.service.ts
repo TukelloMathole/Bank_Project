@@ -36,9 +36,9 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  getCurrentUser(): { role: string, customerId: string } | null {
+  getCurrentUser(): { role: string, customerId: string, token: string } | null {
     const token = localStorage.getItem(this.tokenKey);
-
+  
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split('.')[1]));
@@ -47,7 +47,8 @@ export class AuthService {
           // Token is valid
           return {
             role: payload.role,
-            customerId: payload.Customer_ID // Assuming Customer_ID is part of the token payload
+            customerId: payload.Customer_ID,
+            token: token // Include the actual token here
           };
         } else {
           console.log('Token has expired.');

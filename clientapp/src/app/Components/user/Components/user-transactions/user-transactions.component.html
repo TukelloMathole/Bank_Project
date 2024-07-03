@@ -1,1 +1,147 @@
-<p>user-transactions works!</p>
+<div class="bg-gray-100 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="p-6">
+        <h2 class="text-2xl font-bold mb-4">Transaction History</h2>
+        
+        <!-- Options for transactions -->
+        <div class="flex justify-end mb-4">
+          <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2" (click)="downloadStatement()">
+            Download Statement
+          </button>
+          <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2" (click)="makeTransaction()">
+            Make Transaction
+          </button>
+          <button class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded" (click)="toggleFundTransfer()">
+            Fund Transfer
+          </button>
+          <button class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded" (click)="toggleRecurringTransaction()">
+            Recurring Transaction
+          </button>
+        </div>
+  
+        <!-- Fund Transfer Form -->
+        <div class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50" *ngIf="showFundTransferForm">
+            <div class="form">
+              <div class="flex-column">
+                <h3 class="text-xl font-bold mb-2">Fund Transfer</h3>
+              </div>
+              <form (ngSubmit)="transferFunds()">
+                <div class="flex-column">
+                  <label for="fromAccount">From Account:</label>
+                  <div class="inputForm">
+                    <input type="text" id="fromAccount" [(ngModel)]="transferData.fromAccount" name="fromAccount" required class="input py-1 px-2 border rounded">
+                  </div>
+                </div>
+                <div class="flex-column">
+                  <label for="toAccount">To Account:</label>
+                  <div class="inputForm">
+                    <input type="text" id="toAccount" [(ngModel)]="transferData.toAccount" name="toAccount" required class="input py-1 px-2 border rounded">
+                  </div>
+                </div>
+                <div class="flex-column">
+                  <label for="amount">Amount:</label>
+                  <div class="inputForm">
+                    <input type="number" id="amount" [(ngModel)]="transferData.amount" name="amount" required class="input py-1 px-2 border rounded">
+                  </div>
+                </div>
+                <div class="flex-column">
+                  <label for="transferType">Transfer Type:</label>
+                  <div class="inputForm">
+                    <select id="transferType" [(ngModel)]="transferData.type" name="transferType" required class="input py-1 px-2 border rounded">
+                      <option value="own">Own Account</option>
+                      <option value="external">External Account</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="flex-row">
+                  <button type="submit" class="button-submit">Transfer Funds</button>
+                  <button type="button" class="button-cancel" (click)="cancelTransfer()">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          
+  
+        <!-- Recurring Transaction Form -->
+        <div *ngIf="showRecurringTransactionForm" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+            <div class="form bg-white p-6 rounded-lg shadow-lg">
+              <div class="flex-column">
+                <h3 class="text-xl font-bold mb-2">Recurring Transaction</h3>
+              </div>
+              <form (ngSubmit)="setRecurringTransaction()">
+                <div class="flex-column">
+                  <label for="recFromAccount">From Account:</label>
+                  <div class="inputForm">
+                    <input type="text" id="recFromAccount" [(ngModel)]="recurringData.fromAccount" name="recFromAccount" required class="input py-1 px-2 border rounded">
+                  </div>
+                </div>
+                <div class="flex-column">
+                  <label for="recToAccount">To Account:</label>
+                  <div class="inputForm">
+                    <input type="text" id="recToAccount" [(ngModel)]="recurringData.toAccount" name="recToAccount" required class="input py-1 px-2 border rounded">
+                  </div>
+                </div>
+                <div class="flex-column">
+                  <label for="recAmount">Amount:</label>
+                  <div class="inputForm">
+                    <input type="number" id="recAmount" [(ngModel)]="recurringData.amount" name="recAmount" required class="input py-1 px-2 border rounded">
+                  </div>
+                </div>
+                <div class="flex-column">
+                  <label for="recFrequency">Frequency:</label>
+                  <div class="inputForm">
+                    <select id="recFrequency" [(ngModel)]="recurringData.frequency" name="recFrequency" required class="input py-1 px-2 border rounded">
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <!-- Add more options as needed -->
+                    </select>
+                  </div>
+                </div>
+                <div class="flex-row justify-end mt-4">
+                  <button type="submit" class="button-submit">Set Recurring Transaction</button>
+                  <button type="button" class="button-cancel ml-2" >Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          
+  
+        <!-- Transactions Table -->
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white">
+            <thead>
+              <tr>
+                <th class="py-2 px-4 bg-gray-200">Date</th>
+                <th class="py-2 px-4 bg-gray-200">Description</th>
+                <th class="py-2 px-4 bg-gray-200">Amount</th>
+                <th class="py-2 px-4 bg-gray-200">Type</th>
+                <th class="py-2 px-4 bg-gray-200">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let transaction of transactions">
+                <td class="border px-4 py-2">{{ transaction.date }}</td>
+                <td class="border px-4 py-2">{{ transaction.description }}</td>
+                <td class="border px-4 py-2">{{ transaction.amount }}</td>
+                <td class="border px-4 py-2">{{ transaction.type }}</td>
+                <td class="border px-4 py-2">{{ transaction.balance }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Pagination controls if necessary -->
+        <div class="mt-4 flex justify-end">
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded" (click)="prevPage()" [disabled]="!hasPrevPage">
+            Previous
+          </button>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded ml-2" (click)="nextPage()" [disabled]="!hasNextPage">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -12,66 +12,12 @@ import { CommonModule } from '@angular/common';
 export class UserAccountsComponent implements OnInit {
   account: any;
   settings: any = {};
-  alerts: any[] = [];
 
+  alerts: any[] = []; // Array to store notifications/alerts
+  hasNewNotifications: boolean = false; // Flag to indicate if there are new notifications
+  showNotifications: boolean = false;
 
-  cards = [
-    {
-      type: 'MASTERCARD',
-      logoColor: '#ff9800',
-      logoPath: 'M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z',
-      number: '9759 2484 5269 6576',
-      validThru: '1 2 / 2 4',
-      cardholder: 'TC Mathole',
-      balance: '$70,000',
-      status: 'Active',
-      accountNumber: 'XXXX-XXXX-XXXX-1234'
-    },
-    {
-      type: 'MASTERCARD',
-      logoColor: '#ff9800',
-      logoPath: 'M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z',
-      number: '9759 2484 5269 6576',
-      validThru: '1 2 / 2 4',
-      cardholder: 'TC Mathole',
-      balance: '$70,000',
-      status: 'Active',
-      accountNumber: 'XXXX-XXXX-XXXX-1234'
-    },
-    {
-      type: 'VISA',
-      logoColor: '#1a237e',
-      logoPath: 'M16 10A6 6 0 1 0 16 22A6 6 0 1 0 16 10Z',
-      number: '4897 6542 1234 5678',
-      validThru: '5 8 / 2 5',
-      cardholder: 'TC Mathole',
-      balance: '$45,200',
-      status: 'Active',
-      accountNumber: 'XXXX-XXXX-XXXX-5678'
-    },
-    {
-      type: 'DISCOVER',
-      logoColor: '#ff3d00',
-      logoPath: 'M16 10A6 6 0 1 0 16 22A6 6 0 1 0 16 10Z',
-      number: '3540 1234 5678 9012',
-      validThru: '3 1 / 2 3',
-      cardholder: 'TC Mathole',
-      balance: '$32,000',
-      status: 'Active',
-      accountNumber: 'XXXX-XXXX-XXXX-9012'
-    },
-    {
-      type: 'Investment',
-      logoColor: '#ff3d00',
-      logoPath: 'M16 10A6 6 0 1 0 16 22A6 6 0 1 0 16 10Z',
-      number: '3540 1234 5678 9012',
-      validThru: '3 1 / 2 3',
-      cardholder: 'TC Mathole',
-      balance: '$32,000',
-      status: 'Active',
-      accountNumber: 'XXXX-XXXX-XXXX-9012'
-    },
-  ];
+  cards: any[] = [];
   constructor(private accountService: AccountService) { }
 
 
@@ -84,9 +30,45 @@ export class UserAccountsComponent implements OnInit {
 
   fetchAccountDetails(): void {
     this.accountService.getAccountDetails().subscribe((data) => {
-      this.account = data;
-      console.log("this account details",this.account)
+      this.cards = data.map((account: any) => ({
+        type: account.accountType, // Assuming accountType maps to type in cards
+        logoColor: '#ff9800', // Example logo color
+        logoPath: this.getLogoPath(account.accountType), // Example function to get logo path
+        number: this.maskAccountNumber(account.accountNumber), // Example function to mask account number
+        validThru: this.getValidThru(account.expiryDate), // Example function to format expiry date
+        cardholder: this.formatCardholder(account.firstName, account.middleName, account.lastName), // Example cardholder name
+        balance: account.balance, // Example balance
+        status: account.status, // Example status
+        accountNumber: this.maskAccountNumber(account.accountNumber),
+        CVV: account.cvv // Example masked account number
+      }));
     });
+  }
+
+  // Example function to get logo path based on account type
+  getLogoPath(accountType: string): string {
+    // Implement logic to return logo path based on accountType
+    return 'path_to_logo';
+  }
+  formatCardholder(firstName: string, middleName: string, lastName: string): string {
+    let formattedLastName = lastName.toUpperCase().charAt(0) + lastName.slice(1); // Make first letter of last name uppercase
+
+    // Get first letters of first name and middle name and capitalize them
+    let initials = (firstName ? firstName.charAt(0).toUpperCase() : '') +
+                   (middleName ? middleName.charAt(0).toUpperCase() : '');
+
+    return initials + ' ' + formattedLastName;
+  }
+  // Example function to mask account number
+  maskAccountNumber(accountNumber: string): string {
+    // Implement logic to mask account number if needed
+    return 'XXXX-XXXX-XXXX-' + accountNumber.slice(-4);
+  }
+
+  // Example function to format expiry date
+  getValidThru(expiryDate: string): string {
+    // Implement logic to format expiry date if needed
+    return expiryDate.slice(5, 7) + ' / ' + expiryDate.slice(2, 4);
   }
 
   fetchSettings(): void {
@@ -94,11 +76,20 @@ export class UserAccountsComponent implements OnInit {
       this.settings = data;
     });
   }
-
   fetchAlerts(): void {
     this.accountService.getAccountAlerts().subscribe((data) => {
-      this.alerts = data;
+      this.alerts = data; // Populate alerts array with data fetched from service
+      // Check if there are new notifications to show the red dot/star indicator
+      this.hasNewNotifications = this.alerts.some(alert => !alert.read); // Example: Assuming alerts have a 'read' property
     });
+  }
+  toggleNotifications(): void {
+    this.showNotifications = !this.showNotifications; // Toggle show/hide notifications
+  }
+
+  markAsRead(alert: any): void {
+    alert.read = true; // Example: Marking an alert as read, update based on your data structure
+    // Update backend or any additional logic as needed
   }
 
   saveSettings(): void {

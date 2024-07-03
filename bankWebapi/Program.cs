@@ -2,24 +2,25 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Text;
-using bank_App.Model;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Threading.Tasks;
+using bank_App.Model;
+using WebSocketManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddAuthentication(x =>
+builder.Services.AddAuthentication(options =>
 {
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
 {
-    x.TokenValidationParameters = new TokenValidationParameters
+    options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidateAudience = true,
@@ -30,7 +31,7 @@ builder.Services.AddAuthentication(x =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         ClockSkew = TimeSpan.FromMinutes(5) // Optional: to reduce the allowed clock skew
     };
-    x.Events = new JwtBearerEvents
+    options.Events = new JwtBearerEvents
     {
         OnAuthenticationFailed = context =>
         {
@@ -78,6 +79,7 @@ builder.Services.AddSwaggerGen(c =>
         new string[] { }
     }
     });
+
 });
 
 builder.Services.AddCors(options =>
@@ -96,9 +98,10 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register IUserService here before calling builder.Build()
+// Register services
 builder.Services.AddScoped<ICustomerIdService, CustomerIdService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddWebSocketManager();
 
 var app = builder.Build();
 
