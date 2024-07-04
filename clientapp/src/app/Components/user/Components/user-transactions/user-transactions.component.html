@@ -114,7 +114,7 @@
             <thead>
               <tr>
                 <th class="py-2 px-4 bg-gray-200">Date</th>
-                <th class="py-2 px-4 bg-gray-200">Description</th>
+                <th class="py-2 px-4 bg-gray-200">Account Number</th>
                 <th class="py-2 px-4 bg-gray-200">Amount</th>
                 <th class="py-2 px-4 bg-gray-200">Type</th>
                 <th class="py-2 px-4 bg-gray-200">Balance</th>
@@ -122,10 +122,10 @@
             </thead>
             <tbody>
               <tr *ngFor="let transaction of transactions">
-                <td class="border px-4 py-2">{{ transaction.date }}</td>
-                <td class="border px-4 py-2">{{ transaction.description }}</td>
+                <td class="border px-4 py-2">{{ transaction.transaction_Date | date:'short' }}</td> 
+                <td class="border px-4 py-2">{{ transaction.account_Number }}</td>
                 <td class="border px-4 py-2">{{ transaction.amount }}</td>
-                <td class="border px-4 py-2">{{ transaction.type }}</td>
+                <td class="border px-4 py-2">{{ transaction.transaction_Type }}</td>
                 <td class="border px-4 py-2">{{ transaction.balance }}</td>
               </tr>
             </tbody>
