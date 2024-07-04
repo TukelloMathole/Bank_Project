@@ -7,7 +7,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 import { LandingComponent } from './Components/landing/landing.component';
 import { RegistrationFormComponent } from './Components/registration-form/registration-form.component';
-import { UserSettingsComponent } from './Components/user/Components/user-settings/user-settings.component';
+import { UserSettingsComponent } from './Components/user/Components/user-profile/user-profile.component';
 import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
 import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
 

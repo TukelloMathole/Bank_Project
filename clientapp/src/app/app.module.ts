@@ -16,7 +16,7 @@ import { NotificationComponent } from './Components/notification/notification.co
 import { UserComponent } from './Components/user/user.component';
 import { LoginComponent } from './Components/login/login.component';
 import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
-import { UserSettingsComponent } from './Components/user/Components/user-settings/user-settings.component';
+import { UserProfileComponent } from './Components/user/Components/user-profile/user-profile.component';
 import { UserAccountsComponent } from './Components/user/Components/user-accounts/user-accounts.component';
 import { UserTransactionsComponent } from './Components/user/Components/user-transactions/user-transactions.component';
 import { AccountService } from './Services/account.service';
@@ -42,7 +42,7 @@ import { TransactionService } from './Services/transaction.service';
     WebcamModule,
     RouterModule,
     UnauthorizedComponent,  // Moved here
-    UserSettingsComponent,  // Moved here
+    UserProfileComponent,  // Moved here
     UserAccountsComponent,  // Uncommented
     
     FormsModule,
