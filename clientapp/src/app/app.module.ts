@@ -32,6 +32,7 @@ import { TransactionService } from './Services/transaction.service';
     UserComponent,
     LoginComponent,
     UserTransactionsComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -42,7 +43,6 @@ import { TransactionService } from './Services/transaction.service';
     WebcamModule,
     RouterModule,
     UnauthorizedComponent,  // Moved here
-    UserProfileComponent,  // Moved here
     UserAccountsComponent,  // Uncommented
     
     FormsModule,
