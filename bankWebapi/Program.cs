@@ -103,6 +103,9 @@ builder.Services.AddScoped<ICustomerIdService, CustomerIdService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddWebSocketManager();
 
+builder.Services.AddWebSocketManager();
+builder.Services.AddTransient<NotificationMessageHandler>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -110,6 +113,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API v1"));
 }
+
+app.UseWebSockets();
+app.MapWebSocketManager("/notifications", app.Services.GetService<NotificationMessageHandler>());
+
 
 app.UseHttpsRedirection();
 app.UseCors("AngularApp");
